@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
 
-function App() {
+export default function App() {
+  useEffect(() => {
+    console.log(window.L);
+    const L = window.L;
+
+    const mymap = L.map("map").setView([51.505, -0.09], 13);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(mymap);
+  });
+
+  const state = {
+    lat: 51.505,
+    lng: -0.09,
+    zoom: 13,
+  };
+
+  const position = [state.lat, state.lng];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ height: 500, width: 500 }}>
+      <div id="map" style={{ height: "100%", width: "100%" }} />
     </div>
   );
 }
-
-export default App;
