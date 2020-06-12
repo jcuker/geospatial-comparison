@@ -2,7 +2,6 @@ import React from "react";
 
 export default class Popup extends React.Component {
   componentDidMount() {
-    console.log(window.L);
     const L = window.L;
 
     const mymap = L.map("map").setView([51.505, -0.09], 13);
@@ -13,7 +12,7 @@ export default class Popup extends React.Component {
     }).addTo(mymap);
 
     mymap.on("click", (e) => {
-      var popup = L.popup()
+      L.popup()
         .setLatLng(e.latlng)
         .setContent("You clicked the map at " + e.latlng.toString())
         .openOn(mymap);

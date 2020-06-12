@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class Drawing extends React.Component {
+export default class Shapes extends React.Component {
   componentDidMount() {
     console.log(window.L);
     const L = window.L;
