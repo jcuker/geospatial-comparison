@@ -2,7 +2,6 @@ import React from "react";
 
 export default class GeoJson extends React.Component {
   async componentDidMount() {
-    console.log(window.L);
     const L = window.L;
 
     const mymap = L.map("map").setView([37.71859, -92.007813], 4);
