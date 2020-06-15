@@ -5,7 +5,6 @@ import React from "react";
 import Simple from "./simple";
 import Shapes from "./shapes";
 import Popup from "./popup";
-import { useHistory } from "react-router-dom";
 import GeoJson from "./geojson";
 
 export default class OpenLayers extends React.Component {

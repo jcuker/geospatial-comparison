@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Leaflet from "./leaflet";
 import OpenLayers from "./ol";
+import LandingPage from "./landing-page";
 
 export default function App() {
   return (
@@ -10,16 +11,7 @@ export default function App() {
         <Switch>
           <Route path="/leaflet" component={Leaflet}></Route>
           <Route path="/ol" component={OpenLayers}></Route>
-          <Route path="/">
-            <ul>
-              <li>
-                <Link to="/leaflet">Leaflet</Link>
-              </li>
-              <li>
-                <Link to="/ol">OpenLayers</Link>
-              </li>
-            </ul>
-          </Route>
+          <Route path="/" component={LandingPage}></Route>
         </Switch>
       </div>
     </Router>

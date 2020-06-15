@@ -1,0 +1,17 @@
+.leaflet {
+  height: 50vh;
+  width: 100vw;
+}
+
+.leaflet:hover {
+  background: rgba(195, 227, 121, 0.8);
+}
+
+.ol {
+  height: 50vh;
+  width: 100vw;
+}
+
+.ol:hover {
+  background: rgba(114, 195, 210, 0.8);
+}
