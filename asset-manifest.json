@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/geospatial-web-test/static/css/main.edeb4b1f.chunk.css",
+    "main.js": "/geospatial-web-test/static/js/main.684bb761.chunk.js",
+    "main.js.map": "/geospatial-web-test/static/js/main.684bb761.chunk.js.map",
+    "runtime-main.js": "/geospatial-web-test/static/js/runtime-main.84b8fffe.js",
+    "runtime-main.js.map": "/geospatial-web-test/static/js/runtime-main.84b8fffe.js.map",
+    "static/css/2.6426d77d.chunk.css": "/geospatial-web-test/static/css/2.6426d77d.chunk.css",
+    "static/js/2.ddef6820.chunk.js": "/geospatial-web-test/static/js/2.ddef6820.chunk.js",
+    "static/js/2.ddef6820.chunk.js.map": "/geospatial-web-test/static/js/2.ddef6820.chunk.js.map",
+    "index.html": "/geospatial-web-test/index.html",
+    "precache-manifest.27b4185aa4d0256b12f500b522d3725a.js": "/geospatial-web-test/precache-manifest.27b4185aa4d0256b12f500b522d3725a.js",
+    "service-worker.js": "/geospatial-web-test/service-worker.js",
+    "static/css/2.6426d77d.chunk.css.map": "/geospatial-web-test/static/css/2.6426d77d.chunk.css.map",
+    "static/css/main.edeb4b1f.chunk.css.map": "/geospatial-web-test/static/css/main.edeb4b1f.chunk.css.map",
+    "static/js/2.ddef6820.chunk.js.LICENSE.txt": "/geospatial-web-test/static/js/2.ddef6820.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.84b8fffe.js",
+    "static/css/2.6426d77d.chunk.css",
+    "static/js/2.ddef6820.chunk.js",
+    "static/css/main.edeb4b1f.chunk.css",
+    "static/js/main.684bb761.chunk.js"
+  ]
+}
