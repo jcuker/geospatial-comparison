@@ -1,8 +1,9 @@
 import React from "react";
+import * as turf from "@turf/turf";
 
-export default class GeoJson extends React.Component {
+export default class Center extends React.Component {
   async componentDidMount() {
-    document.title = "Leaflet | GeoJson Example";
+    document.title = "Leaflet | Turf Center";
 
     const L = window.L;
 
@@ -16,9 +17,17 @@ export default class GeoJson extends React.Component {
     const states = await (
       await fetch(`${window.location.origin}/states.json`)
     ).json();
-    const twitter = await (
-      await fetch(`${window.location.origin}/twitter.json`)
-    ).json();
+
+    const turfFeatureCollection = turf.featureCollection(states.features);
+    const allCenters = [];
+
+    turfFeatureCollection.features.forEach((feature) => {
+      const center = turf.center(feature);
+      center.properties = {
+        name: feature.properties.name || "",
+      };
+      allCenters.push(center);
+    });
 
     L.geoJSON(states, {
       onEachFeature: (feature, layer) => {
@@ -30,12 +39,12 @@ export default class GeoJson extends React.Component {
       },
     }).addTo(mymap);
 
-    L.geoJSON(twitter, {
+    const centerFeatureCollection = turf.featureCollection(allCenters);
+    L.geoJSON(centerFeatureCollection, {
       onEachFeature: (feature, layer) => {
-        // does this feature have a property named popupContent?
         if (feature.properties) {
           const properties = feature.properties;
-          this.popupElementTwitter(layer, properties);
+          this.popupElementCenter(layer, properties);
         }
       },
     }).addTo(mymap);
@@ -45,8 +54,8 @@ export default class GeoJson extends React.Component {
     layer.bindPopup(`Name: ${properties.name} id: ${properties.id}`);
   }
 
-  popupElementTwitter(layer, properties) {
-    layer.bindPopup(`Text: ${properties.text} user: ${properties.user}`);
+  popupElementCenter(layer, properties) {
+    layer.bindPopup(`Center of ${properties.name}`);
   }
 
   render() {

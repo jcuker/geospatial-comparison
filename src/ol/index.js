@@ -3,15 +3,31 @@ import { Button, Menu } from "antd";
 import "antd/dist/antd.css";
 import React from "react";
 import Simple from "./simple";
-import Shapes from "./shapes";
+import Drawing from "./drawing";
 import Popup from "./popup";
 import GeoJson from "./geojson";
+import SubMenu from "antd/lib/menu/SubMenu";
+import Connect from "./turf/connect";
+import Center from "./turf/center";
 
 export default class OpenLayers extends React.Component {
-  state = {
-    collapsed: false,
-    key: "1",
-  };
+  constructor() {
+    super();
+    this.state = {
+      collapsed: false,
+      key: "1",
+      turf: false,
+    };
+  }
+
+  componentDidMount() {
+    const splitPathname = window.location.pathname.split("/");
+    const key = splitPathname[splitPathname.length - 1];
+    this.setState({ key });
+    if (key >= 5 && key < 9) {
+      this.setState({ turf: true });
+    }
+  }
 
   toggleCollapsed = () => {
     this.setState({
@@ -21,6 +37,7 @@ export default class OpenLayers extends React.Component {
 
   onSelect = ({ item, key, keyPath, selectedKeys, domEvent }) => {
     this.setState({ key });
+    if (key !== "999") this.props.history.replace({ pathname: `/ol/${key}` });
   };
 
   getOlMap = () => {
@@ -28,14 +45,15 @@ export default class OpenLayers extends React.Component {
       case "1":
         return <Simple />;
       case "2":
-        return <Shapes />;
+        return <Drawing />;
       case "3":
         return <Popup />;
       case "4":
         return <GeoJson />;
-      case "999":
-        this.props.history.push("/leaflet");
-        return;
+      case "5":
+        return <Connect />;
+      case "6":
+        return <Center />;
       default:
         return <Simple />;
     }
@@ -70,7 +88,8 @@ export default class OpenLayers extends React.Component {
             )}
           </Button>
           <Menu
-            defaultSelectedKeys={["1"]}
+            selectedKeys={[this.state.key]}
+            openKeys={[this.state.turf ? "turf" : ""]}
             mode="inline"
             theme="dark"
             style={{
@@ -83,7 +102,22 @@ export default class OpenLayers extends React.Component {
             <Menu.Item key="2">Drawing Shapes</Menu.Item>
             <Menu.Item key="3">Popup at Click</Menu.Item>
             <Menu.Item key="4">GeoJSON</Menu.Item>
-            <Menu.Item key="999">Goto Leaflet</Menu.Item>
+            <SubMenu
+              key="turf"
+              title="Turf"
+              onTitleClick={() => this.setState({ turf: !this.state.turf })}
+            >
+              <Menu.Item key="5">Connect the Dots</Menu.Item>
+              <Menu.Item key="6">Center of States</Menu.Item>
+            </SubMenu>
+            <Menu.Item
+              key="999"
+              onClick={() => {
+                this.props.history.push(`/leaflet/${this.state.key}`);
+              }}
+            >
+              Goto Leaflet
+            </Menu.Item>
           </Menu>
         </div>
         {this.getOlMap()}

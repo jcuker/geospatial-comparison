@@ -18,29 +18,37 @@ export default function LandingPage() {
         height: "100vh",
         width: "100vw",
         alignItems: "center",
+        background: "#121212",
       }}
     >
       <Link
-        to="/leaflet"
+        to="/leaflet/1"
         onMouseEnter={(e) => mouseEnter(e, "")}
         onMouseLeave={mouseLeave}
         className="leaflet"
       >
-        <img src="https://leafletjs.com/docs/images/logo.png" />
+        <img
+          src="https://leafletjs.com/docs/images/logo.png"
+          alt="to leaflet"
+        />
       </Link>
       <Divider
         style={{
           margin: 0,
           padding: 0,
+          borderTop: "1px solid rgb(97, 97, 97)",
         }}
       />
       <Link
-        to="/ol"
+        to="/ol/1"
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseLeave}
         className="ol"
       >
-        <img src="https://financesonline.com/uploads/2019/09/OpenLayers-logo1.png" />
+        <img
+          src="https://financesonline.com/uploads/2019/09/OpenLayers-logo1.png"
+          alt="to openlayers"
+        />
       </Link>
     </div>
   );

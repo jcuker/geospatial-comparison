@@ -6,6 +6,8 @@ import React from "react";
 
 export default class Simple extends React.Component {
   componentDidMount() {
+    document.title = "OpenLayers | Simple Example";
+
     new Map({
       target: "map",
       layers: [

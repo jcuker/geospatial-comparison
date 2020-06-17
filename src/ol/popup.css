@@ -42,6 +42,7 @@
   position: absolute;
   top: 2px;
   right: 8px;
+  cursor: pointer;
 }
 .ol-popup-closer:after {
   content: "✖";

@@ -1,8 +1,9 @@
 import React from "react";
+import * as turf from "@turf/turf";
 
-export default class GeoJson extends React.Component {
+export default class Connect extends React.Component {
   async componentDidMount() {
-    document.title = "Leaflet | GeoJson Example";
+    document.title = "Leaflet | Turf LineString";
 
     const L = window.L;
 
@@ -13,22 +14,18 @@ export default class GeoJson extends React.Component {
         '& <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(mymap);
 
-    const states = await (
-      await fetch(`${window.location.origin}/states.json`)
-    ).json();
     const twitter = await (
       await fetch(`${window.location.origin}/twitter.json`)
     ).json();
 
-    L.geoJSON(states, {
-      onEachFeature: (feature, layer) => {
-        // does this feature have a property named popupContent?
-        if (feature.properties) {
-          const properties = feature.properties;
-          this.popupElementStates(layer, properties);
-        }
-      },
-    }).addTo(mymap);
+    const turfFeatureCollection = turf.featureCollection(twitter.features);
+
+    const flatCoords = [];
+    turfFeatureCollection.features.forEach((feature) => {
+      flatCoords.push(feature.geometry.coordinates);
+    });
+
+    const lineString = turf.lineString(flatCoords);
 
     L.geoJSON(twitter, {
       onEachFeature: (feature, layer) => {
@@ -39,10 +36,8 @@ export default class GeoJson extends React.Component {
         }
       },
     }).addTo(mymap);
-  }
 
-  popupElementStates(layer, properties) {
-    layer.bindPopup(`Name: ${properties.name} id: ${properties.id}`);
+    L.geoJSON(lineString).addTo(mymap);
   }
 
   popupElementTwitter(layer, properties) {

@@ -2,10 +2,11 @@ import React from "react";
 
 export default class Simple extends React.Component {
   componentDidMount() {
-    console.log(window.L);
+    document.title = "Leaflet | Simple Example";
+
     const L = window.L;
 
-    const mymap = L.map("map").setView([51.505, -0.09], 13);
+    const mymap = L.map("map").setView([0, 0], 2);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:

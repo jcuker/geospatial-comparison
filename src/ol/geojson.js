@@ -6,24 +6,22 @@ import "ol/ol.css";
 import Overlay from "ol/Overlay";
 import { OSM } from "ol/source";
 import olVectorSource from "ol/source/Vector";
-import olCircle from "ol/style/Circle";
-import olFill from "ol/style/Fill";
-import olStroke from "ol/style/Stroke";
-import olStyle from "ol/style/Style";
-import olText from "ol/style/Text";
 import View from "ol/View";
 import React from "react";
 import "./popup.css";
+import { styleFunctionStates, styleFunctionTwitter } from "./util";
 
 export default class GeoJson extends React.Component {
   async componentDidMount() {
-    var container = document.getElementById("popup");
-    var content = document.getElementById("popup-content");
-    var closer = document.getElementById("popup-closer");
+    document.title = "OpenLayers | GeoJson Example";
+
+    const container = document.getElementById("popup");
+    const content = document.getElementById("popup-content");
+    const closer = document.getElementById("popup-closer");
     /**
      * Create an overlay to anchor the popup to the map.
      */
-    var overlay = new Overlay({
+    const overlay = new Overlay({
       element: container,
       autoPan: true,
       autoPanAnimation: {
@@ -40,21 +38,22 @@ export default class GeoJson extends React.Component {
       closer.blur();
       return false;
     };
+
     try {
       const layer1 = new olVectorLayer({
         source: new olVectorSource({
           format: new GeoJSON(),
-          url: "twitter.json",
+          url: `${window.location.origin}/twitter.json`,
         }),
-        style: this.styleFunctionTwitter,
+        style: styleFunctionTwitter,
       });
 
       const layer2 = new olVectorLayer({
         source: new olVectorSource({
           format: new GeoJSON(),
-          url: "states-geojson.json",
+          url: `${window.location.origin}/states.json`,
         }),
-        style: this.styleFunctionStates,
+        style: styleFunctionStates,
       });
 
       const map = new Map({
@@ -68,8 +67,8 @@ export default class GeoJson extends React.Component {
         target: "map",
         overlays: [overlay],
         view: new View({
-          center: [0, 0],
-          zoom: 2,
+          center: [-11000000, 4600000],
+          zoom: 4,
         }),
       });
 
@@ -79,7 +78,7 @@ export default class GeoJson extends React.Component {
           features.push(feature);
         });
         if (features.length > 0) {
-          var coordinate = event.coordinate;
+          const coordinate = event.coordinate;
           let popupString = "";
           for (let i = 0; i < features.length; i++) {
             const properties = features[i].getProperties();
@@ -102,49 +101,12 @@ export default class GeoJson extends React.Component {
     }
   }
 
-  styleFunctionTwitter = () => {
-    const white = [255, 255, 255, 1];
-    const blue = [0, 153, 255, 1];
-    const width = 3;
-
-    return [
-      new olStyle({
-        image: new olCircle({
-          radius: width * 2,
-          fill: new olFill({
-            color: blue,
-          }),
-          stroke: new olStroke({
-            color: white,
-            width: width / 2,
-          }),
-        }),
-        zIndex: Infinity,
-      }),
-    ];
-  };
-
-  styleFunctionStates = (feature) => {
-    const color = feature.getProperties().selected ? "#FF6347" : "#7FDBFF33";
-    const name = feature.getProperties().name;
-    return [
-      new olStyle({
-        fill: new olFill({ color: color }),
-        stroke: new olStroke({
-          color: "#0074D9",
-          width: 2,
-        }),
-        text: new olText({ text: name }),
-      }),
-    ];
-  };
-
   render() {
     return (
       <div>
         <div id="map" style={{ height: "100vh", width: "100vw" }}></div>;
         <div id="popup" className="ol-popup">
-          <a href="#" id="popup-closer" className="ol-popup-closer"></a>
+          <div id="popup-closer" className="ol-popup-closer"></div>
           <div id="popup-content"></div>
         </div>
       </div>

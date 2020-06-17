@@ -9,8 +9,8 @@ export default function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/leaflet" component={Leaflet}></Route>
-          <Route path="/ol" component={OpenLayers}></Route>
+          <Route path="/leaflet/:id" component={Leaflet}></Route>
+          <Route path="/ol/:id" component={OpenLayers}></Route>
           <Route path="/" component={LandingPage}></Route>
         </Switch>
       </div>

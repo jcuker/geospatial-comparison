@@ -2,9 +2,11 @@ import React from "react";
 
 export default class Popup extends React.Component {
   componentDidMount() {
+    document.title = "Leaflet | Popup Example";
+
     const L = window.L;
 
-    const mymap = L.map("map").setView([51.505, -0.09], 13);
+    const mymap = L.map("map").setView([37.71859, -92.007813], 4);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:

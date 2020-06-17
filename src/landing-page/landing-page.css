@@ -1,6 +1,7 @@
 .leaflet {
   height: 50vh;
   width: 100vw;
+  text-align: center;
 }
 
 .leaflet:hover {
@@ -10,8 +11,14 @@
 .ol {
   height: 50vh;
   width: 100vw;
+  text-align: center;
 }
 
 .ol:hover {
   background: rgba(114, 195, 210, 0.8);
+}
+
+img {
+  top: 25%;
+  position: relative;
 }

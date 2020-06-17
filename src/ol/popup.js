@@ -10,13 +10,15 @@ import { toStringHDMS } from "ol/coordinate";
 
 export default class Popup extends React.Component {
   componentDidMount() {
-    var container = document.getElementById("popup");
-    var content = document.getElementById("popup-content");
-    var closer = document.getElementById("popup-closer");
+    document.title = "OpenLayers | Popup Example";
+
+    const container = document.getElementById("popup");
+    const content = document.getElementById("popup-content");
+    const closer = document.getElementById("popup-closer");
     /**
      * Create an overlay to anchor the popup to the map.
      */
-    var overlay = new Overlay({
+    const overlay = new Overlay({
       element: container,
       autoPan: true,
       autoPanAnimation: {
@@ -52,8 +54,8 @@ export default class Popup extends React.Component {
      * Add a click handler to the map to render the popup.
      */
     map.on("singleclick", function (evt) {
-      var coordinate = evt.coordinate;
-      var hdms = toStringHDMS(olProj.toLonLat(coordinate));
+      const coordinate = evt.coordinate;
+      const hdms = toStringHDMS(olProj.toLonLat(coordinate));
 
       content.innerHTML = "<p>You clicked here:</p><code>" + hdms + "</code>";
       overlay.setPosition(coordinate);
@@ -65,7 +67,7 @@ export default class Popup extends React.Component {
       <div>
         <div id="map" className="map"></div>
         <div id="popup" className="ol-popup">
-          <a href="#" id="popup-closer" className="ol-popup-closer"></a>
+          <div id="popup-closer" className="ol-popup-closer"></div>
           <div id="popup-content"></div>
         </div>
       </div>
