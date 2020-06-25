@@ -11,16 +11,7 @@ export default function LandingPage() {
 
   function mouseLeave() {}
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100vh",
-        width: "100vw",
-        alignItems: "center",
-        background: "#121212",
-      }}
-    >
+    <div className="landing-page">
       <Link
         to="/leaflet/1"
         onMouseEnter={(e) => mouseEnter(e, "")}
@@ -49,6 +40,21 @@ export default function LandingPage() {
           src="https://financesonline.com/uploads/2019/09/OpenLayers-logo1.png"
           alt="to openlayers"
         />
+      </Link>
+      <Divider
+        style={{
+          margin: 0,
+          padding: 0,
+          borderTop: "1px solid rgb(97, 97, 97)",
+        }}
+      />
+      <Link
+        to="/mapbox/1"
+        onMouseEnter={mouseEnter}
+        onMouseLeave={mouseLeave}
+        className="mapbox"
+      >
+        <img src="https://logodix.com/logo/1863638.png" alt="to mapbox" />
       </Link>
     </div>
   );

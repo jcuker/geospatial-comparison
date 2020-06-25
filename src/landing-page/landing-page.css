@@ -1,5 +1,13 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background: #121212;
+  justify-content: space-around;
+}
+
 .leaflet {
-  height: 50vh;
   width: 100vw;
   text-align: center;
 }
@@ -9,7 +17,6 @@
 }
 
 .ol {
-  height: 50vh;
   width: 100vw;
   text-align: center;
 }
@@ -18,7 +25,20 @@
   background: rgba(114, 195, 210, 0.8);
 }
 
+.mapbox {
+  width: 100vw;
+  text-align: center;
+}
+
+.mapbox:hover {
+  background: rgba(70, 104, 242, 0.8);
+}
+
+a {
+  flex: 1;
+}
+
 img {
-  top: 25%;
   position: relative;
+  top: 25%;
 }
