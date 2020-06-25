@@ -37,7 +37,7 @@ export default class OpenLayers extends React.Component {
 
   onSelect = ({ item, key, keyPath, selectedKeys, domEvent }) => {
     this.setState({ key });
-    if (key !== "999") this.props.history.replace({ pathname: `/ol/${key}` });
+    if (key < "1000") this.props.history.replace({ pathname: `/ol/${key}` });
   };
 
   getOlMap = () => {
@@ -111,12 +111,21 @@ export default class OpenLayers extends React.Component {
               <Menu.Item key="6">Center of States</Menu.Item>
             </SubMenu>
             <Menu.Item
-              key="999"
+              key="1000"
               onClick={() => {
                 this.props.history.push(`/leaflet/${this.state.key}`);
               }}
             >
               Goto Leaflet
+            </Menu.Item>
+
+            <Menu.Item
+              key="1001"
+              onClick={() => {
+                this.props.history.push(`/mapbox/${this.state.key}`);
+              }}
+            >
+              Goto Mapbox
             </Menu.Item>
           </Menu>
         </div>
