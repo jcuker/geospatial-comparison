@@ -5,6 +5,10 @@ import "antd/dist/antd.css";
 import React from "react";
 import Simple from "./simple";
 import Popup from "./popup";
+import Drawing from "./drawing";
+import GeoJSON from "./geojson";
+import Connect from "./turf/connect";
+import Center from "./turf/center";
 
 export default class Mapbox extends React.Component {
   state = {
@@ -30,16 +34,25 @@ export default class Mapbox extends React.Component {
 
   onSelect = ({ item, key, keyPath, selectedKeys, domEvent }) => {
     this.setState({ key });
-    if (key < "1000")
+    if (key < 1000) {
       this.props.history.replace({ pathname: `/mapbox/${key}` });
+    }
   };
 
-  getLeafletMap = () => {
+  getMapboxMap = () => {
     switch (this.state.key) {
       case "1":
         return <Simple />;
+      case "2":
+        return <Drawing />;
       case "3":
         return <Popup />;
+      case "4":
+        return <GeoJSON />;
+      case "5":
+        return <Connect />;
+      case "6":
+        return <Center />;
       default:
         return <Simple />;
     }
@@ -120,7 +133,7 @@ export default class Mapbox extends React.Component {
             </Menu.Item>
           </Menu>
         </div>
-        {this.getLeafletMap()}
+        {this.getMapboxMap()}
       </div>
     );
   }

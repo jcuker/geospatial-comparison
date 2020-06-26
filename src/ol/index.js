@@ -37,7 +37,7 @@ export default class OpenLayers extends React.Component {
 
   onSelect = ({ item, key, keyPath, selectedKeys, domEvent }) => {
     this.setState({ key });
-    if (key < "1000") this.props.history.replace({ pathname: `/ol/${key}` });
+    if (key < 1000) this.props.history.replace({ pathname: `/ol/${key}` });
   };
 
   getOlMap = () => {

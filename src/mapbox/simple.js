@@ -5,6 +5,8 @@ class Simple extends React.Component {
   map = undefined;
 
   componentDidMount() {
+    document.title = "Mapbox | Simple Example";
+
     mapbox.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
     this.map = new mapbox.Map({

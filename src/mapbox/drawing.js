@@ -1,10 +1,21 @@
 import React from "react";
 import * as mapbox from "mapbox-gl/dist/mapbox-gl.js";
-import "./popup.css";
+import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
+import * as MapboxDraw from "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw";
+import { notification } from "antd";
 
 export default class Simple extends React.Component {
   componentDidMount() {
-    document.title = "Mapbox | Popup Example";
+    document.title = "Mapbox | Drawing Example";
+
+    notification.destroy();
+    notification.info({
+      message: "Drawing",
+      description:
+        "Choose a drawing capability from the toolbar below the zoom controls in the top left of the screen!",
+      placement: "topLeft",
+      duration: 5,
+    });
 
     mapbox.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
@@ -16,13 +27,7 @@ export default class Simple extends React.Component {
     });
 
     map.addControl(new mapbox.NavigationControl(), "top-left");
-    map.on("click", function (e) {
-      const lngLat = e.lngLat;
-
-      const htmlStr = `<p>You clicked at ${JSON.stringify(lngLat)}</p>`;
-
-      new mapbox.Popup().setLngLat(lngLat).setHTML(htmlStr).addTo(map);
-    });
+    map.addControl(new MapboxDraw(), "top-left");
   }
 
   render() {
