@@ -19,9 +19,13 @@ export default class Mapbox extends React.Component {
 
   componentDidMount() {
     const splitPathname = window.location.pathname.split("/");
-    const key = splitPathname[splitPathname.length - 1];
+    let key = splitPathname[splitPathname.length - 1];
+    if (key >= 7) {
+      key = 1;
+      window.location.pathname = "mapbox/1";
+    }
     this.setState({ key });
-    if (key >= 5 && key < 9) {
+    if (key >= 5 && key < 7) {
       this.setState({ turf: true });
     }
   }

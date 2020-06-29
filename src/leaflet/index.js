@@ -9,6 +9,7 @@ import Popup from "./popup";
 import GeoJSON from "./geojson";
 import Connect from "./turf/connect";
 import Center from "./turf/center";
+import Radar from "./radar";
 
 export default class Leaflet extends React.Component {
   state = {
@@ -21,7 +22,7 @@ export default class Leaflet extends React.Component {
     const splitPathname = window.location.pathname.split("/");
     const key = splitPathname[splitPathname.length - 1];
     this.setState({ key });
-    if (key >= 5 && key < 9) {
+    if (key >= 5 && key < 7) {
       this.setState({ turf: true });
     }
   }
@@ -51,6 +52,8 @@ export default class Leaflet extends React.Component {
         return <Connect />;
       case "6":
         return <Center />;
+      case "7":
+        return <Radar />;
       default:
         return <Simple />;
     }
@@ -106,7 +109,8 @@ export default class Leaflet extends React.Component {
             >
               <Menu.Item key="5">Connect the Dots</Menu.Item>
               <Menu.Item key="6">Center of States</Menu.Item>
-            </SubMenu>{" "}
+            </SubMenu>
+            <Menu.Item key="7">Radar</Menu.Item>
             <Menu.Item
               key="1000"
               onClick={() => {
