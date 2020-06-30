@@ -29,7 +29,7 @@ export default class Simple extends React.Component {
       duration: 5,
     });
 
-    this.map = this.L.map("map").setView([0, 0], 2);
+    this.map = this.L.map("map").setView([37.71859, -92.007813], 5);
 
     this.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:

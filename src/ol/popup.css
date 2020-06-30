@@ -12,8 +12,10 @@
   bottom: 12px;
   left: -50px;
   min-width: 280px;
+  max-width: 400px;
   max-height: 250px;
   overflow-y: scroll;
+  overflow-x: scroll;
 }
 .ol-popup:after,
 .ol-popup:before {
