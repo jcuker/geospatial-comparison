@@ -26,7 +26,7 @@ export const styleFunctionTwitter = () => {
           width: width / 2,
         }),
       }),
-      zIndex: Infinity,
+      zIndex: Number.MAX_SAFE_INTEGER,
     }),
   ];
 };
@@ -48,7 +48,7 @@ export const styleFunctionEnrichedTwitter = (feature) => {
           width: width / 2,
         }),
       }),
-      zIndex: Infinity,
+      zIndex: Number.MAX_SAFE_INTEGER,
     }),
   ];
 };
@@ -82,6 +82,34 @@ export const styleFunctionStates = (feature) => {
   ];
 };
 
+export function styleFunctionTwitterCluster(feature) {
+  const features = feature.get("features");
+  const size = features.length;
+
+  if (size === 0) return;
+
+  return size > 1
+    ? new olStyle({
+        image: new olCircle({
+          radius: 10,
+          stroke: new olStroke({
+            color: "#fff",
+          }),
+          fill: new olFill({
+            color: "#3399CC",
+          }),
+        }),
+        text: new olText({
+          text: size.toString(),
+          fill: new olFill({
+            color: "#fff",
+          }),
+        }),
+        zIndex: Number.MAX_SAFE_INTEGER,
+      })
+    : styleFunctionEnrichedTwitter(features[0]);
+}
+
 export function mapHasLayer(map, layer) {
   const targetProperties = layer.getProperties();
   const allLayers = map.getLayers();
@@ -108,4 +136,11 @@ export function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export function isCluster(feature) {
+  if (!feature || !feature.get("features")) {
+    return false;
+  }
+  return feature.get("features").length >= 1;
 }
