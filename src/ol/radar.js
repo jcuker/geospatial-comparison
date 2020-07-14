@@ -174,7 +174,7 @@ export default class Simple extends React.Component {
     notification.success({
       message: "Success",
       description: `Loaded ${json.features.length} tweets onto the map!`,
-      duration: 5,
+      duration: 10,
       placement: "topLeft",
     });
     notification.info({
@@ -182,7 +182,7 @@ export default class Simple extends React.Component {
       description:
         "Press the play button in the lower-left corner to start the radar animation.\n You can page through each frame using the arrows and change the radius of the clutering algorithm with the slider.",
       placement: "topLeft",
-      duration: 10,
+      duration: 12,
     });
 
     json.features.map((feature) => {
