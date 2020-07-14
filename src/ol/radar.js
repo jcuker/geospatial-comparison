@@ -148,23 +148,29 @@ export default class Simple extends React.Component {
     });
 
     let json;
-    if (USE_REMOTE) {
-      const maxFeatures = 50_000;
+    try {
+      if (USE_REMOTE) {
+        const maxFeatures = 50_000;
 
-      json = [];
+        json = [];
 
-      for (let i = 0; i < 1; i++) {
-        const url = `${process.env.REACT_APP_GEOSERVER_URL}/streaming/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=streaming%3Astl-twitter&TIME=PT3H/PRESENT&width=768&height=330&srs=EPSG%3A4326&maxFeatures=${maxFeatures}&outputFormat=application%2Fjson`;
-        const temp = await (await fetch(url)).json();
+        for (let i = 0; i < 1; i++) {
+          const url = `${process.env.REACT_APP_GEOSERVER_URL}/streaming/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=streaming%3Astl-twitter&TIME=PT3H/PRESENT&width=768&height=330&srs=EPSG%3A4326&maxFeatures=${maxFeatures}&outputFormat=application%2Fjson`;
+          const temp = await (await fetch(url)).json();
 
-        if (i === 0) {
-          json = temp;
-        } else {
-          json.features = json.features.concat(temp.features);
-          json.numberReturned += temp.numberReturned;
+          if (i === 0) {
+            json = temp;
+          } else {
+            json.features = json.features.concat(temp.features);
+            json.numberReturned += temp.numberReturned;
+          }
         }
+      } else {
+        json = await (
+          await fetch(`${window.location.origin}/enriched_twitter.json`)
+        ).json();
       }
-    } else {
+    } catch (err) {
       json = await (
         await fetch(`${window.location.origin}/enriched_twitter.json`)
       ).json();
