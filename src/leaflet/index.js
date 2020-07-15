@@ -1,4 +1,9 @@
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  CloudServerOutlined,
+  HddOutlined,
+} from "@ant-design/icons";
 import { Button, Menu } from "antd";
 import SubMenu from "antd/lib/menu/SubMenu";
 import "antd/dist/antd.css";
@@ -16,20 +21,37 @@ export default class Leaflet extends React.Component {
     collapsed: false,
     key: "1",
     turf: false,
+    remote: false,
+    remoteUrl: "",
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const splitPathname = window.location.pathname.split("/");
     const key = splitPathname[splitPathname.length - 1];
-    this.setState({ key });
     if (key >= 5 && key < 7) {
       this.setState({ turf: true });
     }
+
+    const jsonConfig = await (
+      await fetch(`${window.location.origin}/env.json`)
+    ).json();
+
+    this.setState({
+      key,
+      turf: key >= 5 && key < 7,
+      remoteUrl: jsonConfig.geoserverUrl,
+    });
   }
 
   toggleCollapsed = () => {
     this.setState({
       collapsed: !this.state.collapsed,
+    });
+  };
+
+  toggleRemote = () => {
+    this.setState({
+      remote: !this.state.remote,
     });
   };
 
@@ -39,23 +61,45 @@ export default class Leaflet extends React.Component {
   };
 
   getLeafletMap = () => {
+    const componentKey = `${String(this.state.remote)}-${this.state.key}`;
+
     switch (this.state.key) {
       case "1":
-        return <Simple />;
+        return <Simple key={componentKey} />;
       case "2":
-        return <Drawing />;
+        return <Drawing key={componentKey} />;
       case "3":
-        return <Popup />;
+        return <Popup key={componentKey} />;
       case "4":
-        return <GeoJSON />;
+        return (
+          <GeoJSON
+            key={componentKey}
+            remote={this.state.remote ? this.state.remoteUrl : undefined}
+          />
+        );
       case "5":
-        return <Connect />;
+        return (
+          <Connect
+            key={componentKey}
+            remote={this.state.remote ? this.state.remoteUrl : undefined}
+          />
+        );
       case "6":
-        return <Center />;
+        return (
+          <Center
+            key={componentKey}
+            remote={this.state.remote ? this.state.remoteUrl : undefined}
+          />
+        );
       case "7":
-        return <Radar />;
+        return (
+          <Radar
+            key={componentKey}
+            remote={this.state.remote ? this.state.remoteUrl : undefined}
+          />
+        );
       default:
-        return <Simple />;
+        return <Simple key={componentKey} />;
     }
   };
 
@@ -85,6 +129,19 @@ export default class Leaflet extends React.Component {
           >
             {React.createElement(
               this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined
+            )}
+          </Button>
+          <Button
+            type="primary"
+            onClick={this.toggleRemote}
+            style={{
+              position: "absolute",
+              top: 45,
+              right: this.state.collapsed ? 5 : "12.25rem",
+            }}
+          >
+            {React.createElement(
+              this.state.remote ? CloudServerOutlined : HddOutlined
             )}
           </Button>
           <Menu

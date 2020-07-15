@@ -1,5 +1,6 @@
 import React from "react";
 import * as turf from "@turf/turf";
+import { notification } from "antd";
 
 export default class Connect extends React.Component {
   async componentDidMount() {
@@ -9,35 +10,45 @@ export default class Connect extends React.Component {
 
     const mymap = L.map("map").setView([37.71859, -92.007813], 4);
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '& <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(mymap);
+    try {
+      const baseUrl = this.props.remote
+        ? this.props.remote
+        : window.location.origin;
 
-    const twitter = await (
-      await fetch(`${window.location.origin}/twitter.json`)
-    ).json();
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '& <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(mymap);
 
-    const turfFeatureCollection = turf.featureCollection(twitter.features);
+      const twitter = await (await fetch(`${baseUrl}/twitter.json`)).json();
 
-    const flatCoords = [];
-    turfFeatureCollection.features.forEach((feature) => {
-      flatCoords.push(feature.geometry.coordinates);
-    });
+      const turfFeatureCollection = turf.featureCollection(twitter.features);
 
-    const lineString = turf.lineString(flatCoords);
+      const flatCoords = [];
+      turfFeatureCollection.features.forEach((feature) => {
+        flatCoords.push(feature.geometry.coordinates);
+      });
 
-    L.geoJSON(twitter, {
-      onEachFeature: (feature, layer) => {
-        // does this feature have a property named popupContent?
-        if (feature.properties) {
-          const properties = feature.properties;
-          this.popupElementTwitter(layer, properties);
-        }
-      },
-    }).addTo(mymap);
+      const lineString = turf.lineString(flatCoords);
 
-    L.geoJSON(lineString).addTo(mymap);
+      L.geoJSON(twitter, {
+        onEachFeature: (feature, layer) => {
+          // does this feature have a property named popupContent?
+          if (feature.properties) {
+            const properties = feature.properties;
+            this.popupElementTwitter(layer, properties);
+          }
+        },
+      }).addTo(mymap);
+
+      L.geoJSON(lineString).addTo(mymap);
+    } catch (err) {
+      notification.error({
+        placement: "topLeft",
+        description:
+          "Unable to get data from remote. Try to use local data if problem persists.",
+      });
+    }
   }
 
   popupElementTwitter(layer, properties) {

@@ -25,8 +25,6 @@ import "./popup.css";
 import Overlay from "ol/Overlay";
 import olClusterSource from "ol/source/Cluster";
 
-const USE_REMOTE = true;
-
 export default class Simple extends React.Component {
   map = undefined;
 
@@ -148,14 +146,18 @@ export default class Simple extends React.Component {
     });
 
     let json;
+    const baseUrl = this.props.remote
+      ? this.props.remote
+      : window.location.origin;
+
     try {
-      if (USE_REMOTE) {
+      if (this.props.remote) {
         const maxFeatures = 50_000;
 
         json = [];
 
         for (let i = 0; i < 1; i++) {
-          const url = `${process.env.REACT_APP_GEOSERVER_URL}/streaming/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=streaming%3Astl-twitter&TIME=PT3H/PRESENT&width=768&height=330&srs=EPSG%3A4326&maxFeatures=${maxFeatures}&outputFormat=application%2Fjson`;
+          const url = `${baseUrl}/streaming/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=streaming%3Astl-twitter&TIME=PT3H/PRESENT&width=768&height=330&srs=EPSG%3A4326&maxFeatures=${maxFeatures}&outputFormat=application%2Fjson`;
           const temp = await (await fetch(url)).json();
 
           if (i === 0) {
@@ -166,14 +168,16 @@ export default class Simple extends React.Component {
           }
         }
       } else {
-        json = await (
-          await fetch(`${window.location.origin}/enriched_twitter.json`)
-        ).json();
+        json = await (await fetch(`${baseUrl}/enriched_twitter.json`)).json();
       }
     } catch (err) {
-      json = await (
-        await fetch(`${window.location.origin}/enriched_twitter.json`)
-      ).json();
+      notification.destroy();
+      notification.error({
+        placement: "topLeft",
+        description:
+          "Unable to get data from remote. Try to use local data if problem persists.",
+      });
+      return;
     }
 
     notification.destroy();
@@ -195,7 +199,7 @@ export default class Simple extends React.Component {
       const props = feature.properties;
       props["twitter"] = true;
 
-      if (USE_REMOTE) {
+      if (this.props.remote) {
         const unixTimestampOfTweet = new Date(props["dtg"]).getTime() / 1000;
         // find the matching bucket
         const ts = this.findMatchingTimestamp(unixTimestampOfTweet);

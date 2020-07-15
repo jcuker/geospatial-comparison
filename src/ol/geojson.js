@@ -10,6 +10,7 @@ import View from "ol/View";
 import React from "react";
 import "./popup.css";
 import { styleFunctionStates, styleFunctionTwitter } from "./util";
+import { notification } from "antd";
 
 export default class GeoJson extends React.Component {
   async componentDidMount() {
@@ -40,10 +41,14 @@ export default class GeoJson extends React.Component {
     };
 
     try {
+      const baseUrl = this.props.remote
+        ? this.props.remote
+        : window.location.origin;
+
       const layer1 = new olVectorLayer({
         source: new olVectorSource({
           format: new GeoJSON(),
-          url: `${window.location.origin}/twitter.json`,
+          url: `${baseUrl}/twitter.json`,
         }),
         style: styleFunctionTwitter,
       });
@@ -51,7 +56,7 @@ export default class GeoJson extends React.Component {
       const layer2 = new olVectorLayer({
         source: new olVectorSource({
           format: new GeoJSON(),
-          url: `${window.location.origin}/states.json`,
+          url: `${baseUrl}/states.json`,
         }),
         style: styleFunctionStates,
       });
@@ -97,7 +102,24 @@ export default class GeoJson extends React.Component {
       });
     } catch (er) {
       console.log(er);
-      return null;
+      notification.error({
+        placement: "topLeft",
+        message:
+          "Unable to get data from remote. Try to use local data if problem persists.",
+      });
+      new Map({
+        layers: [
+          new TileLayer({
+            source: new OSM(),
+          }),
+        ],
+        target: "map",
+        overlays: [overlay],
+        view: new View({
+          center: [-11000000, 4600000],
+          zoom: 4,
+        }),
+      });
     }
   }
 

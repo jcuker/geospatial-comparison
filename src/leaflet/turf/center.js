@@ -1,5 +1,6 @@
 import React from "react";
 import * as turf from "@turf/turf";
+import { notification } from "antd";
 
 export default class Center extends React.Component {
   async componentDidMount() {
@@ -14,40 +15,50 @@ export default class Center extends React.Component {
         '& <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(mymap);
 
-    const states = await (
-      await fetch(`${window.location.origin}/states.json`)
-    ).json();
+    try {
+      const baseUrl = this.props.remote
+        ? this.props.remote
+        : window.location.origin;
 
-    const turfFeatureCollection = turf.featureCollection(states.features);
-    const allCenters = [];
+      const states = await (await fetch(`${baseUrl}/states.json`)).json();
 
-    turfFeatureCollection.features.forEach((feature) => {
-      const center = turf.center(feature);
-      center.properties = {
-        name: feature.properties.name || "",
-      };
-      allCenters.push(center);
-    });
+      const turfFeatureCollection = turf.featureCollection(states.features);
+      const allCenters = [];
 
-    L.geoJSON(states, {
-      onEachFeature: (feature, layer) => {
-        // does this feature have a property named popupContent?
-        if (feature.properties) {
-          const properties = feature.properties;
-          this.popupElementStates(layer, properties);
-        }
-      },
-    }).addTo(mymap);
+      turfFeatureCollection.features.forEach((feature) => {
+        const center = turf.center(feature);
+        center.properties = {
+          name: feature.properties.name || "",
+        };
+        allCenters.push(center);
+      });
 
-    const centerFeatureCollection = turf.featureCollection(allCenters);
-    L.geoJSON(centerFeatureCollection, {
-      onEachFeature: (feature, layer) => {
-        if (feature.properties) {
-          const properties = feature.properties;
-          this.popupElementCenter(layer, properties);
-        }
-      },
-    }).addTo(mymap);
+      L.geoJSON(states, {
+        onEachFeature: (feature, layer) => {
+          // does this feature have a property named popupContent?
+          if (feature.properties) {
+            const properties = feature.properties;
+            this.popupElementStates(layer, properties);
+          }
+        },
+      }).addTo(mymap);
+
+      const centerFeatureCollection = turf.featureCollection(allCenters);
+      L.geoJSON(centerFeatureCollection, {
+        onEachFeature: (feature, layer) => {
+          if (feature.properties) {
+            const properties = feature.properties;
+            this.popupElementCenter(layer, properties);
+          }
+        },
+      }).addTo(mymap);
+    } catch (err) {
+      notification.error({
+        placement: "topLeft",
+        description:
+          "Unable to get data from remote. Try to use local data if problem persists.",
+      });
+    }
   }
 
   popupElementStates(layer, properties) {

@@ -1,4 +1,5 @@
 import React from "react";
+import { notification } from "antd";
 
 export default class GeoJson extends React.Component {
   async componentDidMount() {
@@ -13,32 +14,40 @@ export default class GeoJson extends React.Component {
         '& <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(mymap);
 
-    const states = await (
-      await fetch(`${window.location.origin}/states.json`)
-    ).json();
-    const twitter = await (
-      await fetch(`${window.location.origin}/twitter.json`)
-    ).json();
+    try {
+      const baseUrl = this.props.remote
+        ? this.props.remote
+        : window.location.origin;
 
-    L.geoJSON(states, {
-      onEachFeature: (feature, layer) => {
-        // does this feature have a property named popupContent?
-        if (feature.properties) {
-          const properties = feature.properties;
-          this.popupElementStates(layer, properties);
-        }
-      },
-    }).addTo(mymap);
+      const states = await (await fetch(`${baseUrl}/states.json`)).json();
+      const twitter = await (await fetch(`${baseUrl}/twitter.json`)).json();
 
-    L.geoJSON(twitter, {
-      onEachFeature: (feature, layer) => {
-        // does this feature have a property named popupContent?
-        if (feature.properties) {
-          const properties = feature.properties;
-          this.popupElementTwitter(layer, properties);
-        }
-      },
-    }).addTo(mymap);
+      L.geoJSON(states, {
+        onEachFeature: (feature, layer) => {
+          // does this feature have a property named popupContent?
+          if (feature.properties) {
+            const properties = feature.properties;
+            this.popupElementStates(layer, properties);
+          }
+        },
+      }).addTo(mymap);
+
+      L.geoJSON(twitter, {
+        onEachFeature: (feature, layer) => {
+          // does this feature have a property named popupContent?
+          if (feature.properties) {
+            const properties = feature.properties;
+            this.popupElementTwitter(layer, properties);
+          }
+        },
+      }).addTo(mymap);
+    } catch (err) {
+      notification.error({
+        placement: "topLeft",
+        description:
+          "Unable to get data from remote. Try to use local data if problem persists.",
+      });
+    }
   }
 
   popupElementStates(layer, properties) {
