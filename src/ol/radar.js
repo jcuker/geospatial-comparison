@@ -52,32 +52,14 @@ export default class Simple extends React.Component {
   async componentDidMount() {
     document.title = "OpenLayers | Radar Example";
 
-    notification.destroy();
-    notification.info({
-      message: "Please Wait",
-      description: "Loading data from geoserver...",
-      placement: "topLeft",
-      duration: 0,
-    });
-
+    // Create the overlay and the popup elements
     const container = document.getElementById("popup");
     const content = document.getElementById("popup-content");
     const closer = document.getElementById("popup-closer");
+    const overlay = this.createOverlay(container, content, closer);
 
-    const overlay = new Overlay({
-      element: container,
-      autoPan: true,
-      autoPanAnimation: {
-        duration: 250,
-      },
-    });
-
-    closer.onclick = function () {
-      overlay.setPosition(undefined);
-      closer.blur();
-      return false;
-    };
-
+    // Load the data from a remote geoserver or a local file.
+    // Note we are not awaiting so that the map will load and be responsive while the data is fetched.
     this.loadData();
 
     this.map = new Map({
@@ -97,9 +79,12 @@ export default class Simple extends React.Component {
     this.map.on("singleclick", (event) => {
       const features = [];
 
+      // iterate all features at the click pixel
       this.map.forEachFeatureAtPixel(event.pixel, function (feature, layer) {
+        // Have to check to see if the feature is a cluster. A cluser will be nsted in another fearure and we will have to handle it differently.
         if (isCluster(feature)) {
           const clusterFeatures = feature.get("features");
+
           for (const currFeature of clusterFeatures) {
             const properties = currFeature.getProperties();
             if (properties.twitter) {
@@ -124,6 +109,7 @@ export default class Simple extends React.Component {
           str += `The tweet seems to have a <b>${properties.sentiment}</b> sentiment.`;
 
           popupString += `Feature ${i + 1}:<br/> ${str}<br/>`;
+          // If there is at least one feature, add another line break
           if (i < features.length - 1) popupString += "<br/>";
         }
 
@@ -136,37 +122,53 @@ export default class Simple extends React.Component {
     });
   }
 
+  createOverlay(container, content, closer) {
+    const overlay = new Overlay({
+      element: container,
+      autoPan: true,
+      autoPanAnimation: {
+        duration: 250,
+      },
+    });
+
+    closer.onclick = function () {
+      overlay.setPosition(undefined);
+      closer.blur();
+      return false;
+    };
+
+    return overlay;
+  }
+
   async loadData() {
     this.timestamps = await (
       await fetch("https://api.rainviewer.com/public/maps.json")
     ).json();
 
+    // convert the unix timestamps from rainviewer to a js timestamp
     this.jsDates = this.timestamps.map((ts) => {
       return new Date(ts * 1000);
     });
 
-    let json;
     const baseUrl = this.props.remote
       ? this.props.remote
       : window.location.origin;
 
+    // Remove any current notifications and display the loading one.
+    notification.destroy();
+    notification.info({
+      message: "Please Wait",
+      description: "Loading data...",
+      placement: "topLeft",
+      duration: 0,
+    });
+    let json;
+
     try {
       if (this.props.remote) {
         const maxFeatures = 50_000;
-
-        json = [];
-
-        for (let i = 0; i < 1; i++) {
-          const url = `${baseUrl}/streaming/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=streaming%3Astl-twitter&TIME=PT3H/PRESENT&width=768&height=330&srs=EPSG%3A4326&maxFeatures=${maxFeatures}&outputFormat=application%2Fjson`;
-          const temp = await (await fetch(url)).json();
-
-          if (i === 0) {
-            json = temp;
-          } else {
-            json.features = json.features.concat(temp.features);
-            json.numberReturned += temp.numberReturned;
-          }
-        }
+        const url = `${baseUrl}/streaming/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=streaming%3Astl-twitter&TIME=PT3H/PRESENT&width=768&height=330&srs=EPSG%3A4326&maxFeatures=${maxFeatures}&outputFormat=application%2Fjson`;
+        json = await (await fetch(url)).json();
       } else {
         json = await (await fetch(`${baseUrl}/enriched_twitter.json`)).json();
       }
@@ -175,28 +177,15 @@ export default class Simple extends React.Component {
       notification.error({
         placement: "topLeft",
         description:
-          "Unable to get data from remote. Try to use local data if problem persists.",
+          "Unable to get data. If not already, try to use local data if problem persists.",
       });
       return;
     }
 
-    notification.destroy();
-    notification.success({
-      message: "Success",
-      description: `Loaded ${json.features.length} tweets onto the map!`,
-      duration: 10,
-      placement: "topLeft",
-    });
-    notification.info({
-      message: "Radar",
-      description:
-        "Press the play button in the lower-left corner to start the radar animation.\n You can page through each frame using the arrows and change the radius of the clutering algorithm with the slider.",
-      placement: "topLeft",
-      duration: 12,
-    });
-
+    // do some logic for each feature
     json.features.map((feature) => {
       const props = feature.properties;
+      // this helps in the case we have other non-twitter features at the same pixel when clicking
       props["twitter"] = true;
 
       if (this.props.remote) {
@@ -205,7 +194,7 @@ export default class Simple extends React.Component {
         const ts = this.findMatchingTimestamp(unixTimestampOfTweet);
         props["dtg"] = ts;
       } else {
-        // hack the date
+        // create some random date information for local data
         const maxIndex = this.timestamps.length - 1;
         const dateIdx = getRandomInt(0, maxIndex);
         props["dtg"] = this.jsDates[dateIdx].getTime() / 1000;
@@ -217,12 +206,16 @@ export default class Simple extends React.Component {
 
     const format = new GeoJSON();
 
-    // GeoJson's default projection is 4326 while OL's is 3857
+    // convert the raw jason into geojson object for further processing
     format.readFeatures(json).map((feature) => {
       const properties = feature.getProperties();
       const ts = properties.dtg;
+
+      // add the feature to the correct time bucket
       if (!this.tweetsByTime[ts]) this.tweetsByTime[ts] = [];
       this.tweetsByTime[ts].push(feature);
+
+      // GeoJson's default projection is 4326 while OL's is 3857 we need to transform
       feature.getGeometry().transform("EPSG:4326", "EPSG:3857");
       return feature;
     });
@@ -247,8 +240,25 @@ export default class Simple extends React.Component {
     });
 
     this.map.addLayer(this.tweetClusterLayer);
+    // optional call to only have non-clustered tweets.
+    // this.map.addLayer(this.twitterLayer);
     this.showFrame(this.animationPosition);
     this.setState({ loaded: true });
+
+    notification.destroy();
+    notification.success({
+      message: "Success",
+      description: `Loaded ${json.features.length} tweets onto the map!`,
+      duration: 10,
+      placement: "topLeft",
+    });
+    notification.info({
+      message: "Radar",
+      description:
+        "Press the play button in the lower-left corner to start the radar animation.\n You can page through each frame using the arrows and change the radius of the clutering algorithm with the slider.",
+      placement: "topLeft",
+      duration: 12,
+    });
   }
 
   componentWillUnmount() {
@@ -271,6 +281,7 @@ export default class Simple extends React.Component {
     }
   }
 
+  // Next 5 functions were adapted from RainViewer's OpenLayers example
   addLayer = (ts) => {
     if (!this.radarLayers[ts]) {
       const url =
@@ -368,7 +379,7 @@ export default class Simple extends React.Component {
     this.changeRadarPosition(nextPosition + preloadingDirection, true);
   };
 
-  getTimeString() {
+  getTimeDisplay() {
     if (this.jsDates.length === 0) return new Date().toLocaleString("en-us");
 
     const jsDateObj =
@@ -376,9 +387,24 @@ export default class Simple extends React.Component {
         ? this.jsDates[0]
         : this.jsDates[this.animationPosition];
 
-    return jsDateObj.toLocaleString("en-us");
+    const timeString = jsDateObj.toLocaleString("en-us");
+    return (
+      <p
+        style={{
+          fontSize: 12,
+          textAlign: "center",
+          alignSelf: "center",
+          justifySelf: "center",
+          margin: 0,
+          color: "black",
+        }}
+      >
+        {timeString}
+      </p>
+    );
   }
 
+  // Direction is either 'l' for left or 'r' for right
   stepPosition = (direction) => {
     if (!this.state.loaded || this.state.playing) return;
     const newPosition =
@@ -386,6 +412,8 @@ export default class Simple extends React.Component {
         ? this.animationPosition - 1
         : this.animationPosition + 1;
     this.showFrame(newPosition);
+    // since we adpted a generic openlayers example, react was not used. None of the radar
+    // variables are tied to state. In order to avoid a large refactor, just force an update to rerender.
     this.forceUpdate();
   };
 
@@ -413,20 +441,7 @@ export default class Simple extends React.Component {
   }
 
   render() {
-    const timeDisplay = (
-      <p
-        style={{
-          fontSize: 12,
-          textAlign: "center",
-          alignSelf: "center",
-          justifySelf: "center",
-          margin: 0,
-          color: "black",
-        }}
-      >
-        {this.getTimeString()}
-      </p>
-    );
+    const timeDisplay = this.getTimeDisplay();
 
     return (
       <div style={{ height: "100%", width: "100%" }}>
