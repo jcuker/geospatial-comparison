@@ -68,32 +68,17 @@ export default class OpenLayers extends React.Component {
 
     switch (this.state.key) {
       case "1":
-        return <Simple key={componentKey} />;
+        return <Simple />;
       case "2":
-        return <Drawing key={componentKey} />;
+        return <Drawing />;
       case "3":
-        return <Popup key={componentKey} />;
+        return <Popup />;
       case "4":
-        return (
-          <GeoJson
-            key={componentKey}
-            remote={this.state.remote ? this.state.remoteUrl : undefined}
-          />
-        );
+        return <GeoJson />;
       case "5":
-        return (
-          <Connect
-            key={componentKey}
-            remote={this.state.remote ? this.state.remoteUrl : undefined}
-          />
-        );
+        return <Connect />;
       case "6":
-        return (
-          <Center
-            key={componentKey}
-            remote={this.state.remote ? this.state.remoteUrl : undefined}
-          />
-        );
+        return <Center />;
       case "7":
         return (
           <Radar
@@ -102,11 +87,28 @@ export default class OpenLayers extends React.Component {
           />
         );
       default:
-        return <Simple key={componentKey} />;
+        return <Simple />;
     }
   };
 
   render() {
+    const dataLocationButton =
+      this.state.key === "7" ? (
+        <Button
+          type="primary"
+          onClick={this.toggleRemote}
+          style={{
+            position: "absolute",
+            top: 45,
+            right: this.state.collapsed ? 5 : "12.25rem",
+          }}
+        >
+          {React.createElement(
+            this.state.remote ? CloudServerOutlined : HddOutlined
+          )}
+        </Button>
+      ) : undefined;
+
     return (
       <div
         style={{
@@ -134,19 +136,7 @@ export default class OpenLayers extends React.Component {
               this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined
             )}
           </Button>
-          <Button
-            type="primary"
-            onClick={this.toggleRemote}
-            style={{
-              position: "absolute",
-              top: 45,
-              right: this.state.collapsed ? 5 : "12.25rem",
-            }}
-          >
-            {React.createElement(
-              this.state.remote ? CloudServerOutlined : HddOutlined
-            )}
-          </Button>
+          {dataLocationButton}
           <Menu
             selectedKeys={[this.state.key]}
             openKeys={[this.state.turf ? "turf" : ""]}

@@ -14,14 +14,15 @@ export default class Simple extends React.Component {
       zoom: 3,
     });
     map.addControl(new mapbox.NavigationControl(), "top-left");
-    const baseUrl = this.props.remote
-      ? this.props.remote
-      : window.location.origin;
 
     map.on("load", async function () {
-      const statesJson = await (await fetch(`${baseUrl}/states.json`)).json();
+      const statesJson = await (
+        await fetch(`${window.location.origin}/states.json`)
+      ).json();
 
-      const twitterJson = await (await fetch(`${baseUrl}/twitter.json`)).json();
+      const twitterJson = await (
+        await fetch(`${window.location.origin}/twitter.json`)
+      ).json();
 
       map.addSource("states", {
         type: "geojson",

@@ -413,7 +413,20 @@ export default class Simple extends React.Component {
   }
 
   render() {
-    const timeDisplay = this.getTimeString();
+    const timeDisplay = (
+      <p
+        style={{
+          fontSize: 12,
+          textAlign: "center",
+          alignSelf: "center",
+          justifySelf: "center",
+          margin: 0,
+          color: "black",
+        }}
+      >
+        {this.getTimeString()}
+      </p>
+    );
 
     return (
       <div style={{ height: "100%", width: "100%" }}>
@@ -525,15 +538,7 @@ export default class Simple extends React.Component {
             >
               <LeftOutlined />
             </Button>
-            <p
-              style={{
-                margin: 0,
-                textAlign: "center",
-                color: "black",
-              }}
-            >
-              {timeDisplay}
-            </p>
+            {timeDisplay}
             <Button
               type="primary"
               style={{

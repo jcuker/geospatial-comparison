@@ -11,7 +11,6 @@ import React from "react";
 import "../popup.css";
 import { styleFunctionStates } from "../util";
 import Overlay from "ol/Overlay";
-import { notification } from "antd";
 
 export default class Center extends React.Component {
   async componentDidMount() {
@@ -41,107 +40,82 @@ export default class Center extends React.Component {
       return false;
     };
 
-    try {
-      const baseUrl = this.props.remote
-        ? this.props.remote
-        : window.location.origin;
+    const statesResponse = await fetch(`${window.location.origin}/states.json`);
+    const geoJson = await statesResponse.json();
 
-      const statesResponse = await fetch(`${baseUrl}/states.json`);
-      const geoJson = await statesResponse.json();
+    const source = new olVectorSource();
+    const format = new GeoJSON();
+    const features = format.readFeatures(geoJson);
 
-      const source = new olVectorSource();
-      const format = new GeoJSON();
-      const features = format.readFeatures(geoJson);
+    // GeoJson's default projection is 4326 while OL's is 3857
+    features.map((feature) =>
+      feature.getGeometry().transform("EPSG:4326", "EPSG:3857")
+    );
 
-      // GeoJson's default projection is 4326 while OL's is 3857
-      features.map((feature) =>
-        feature.getGeometry().transform("EPSG:4326", "EPSG:3857")
-      );
-
-      // work with raw json
-      for (const feature of geoJson.features) {
-        const polygon = turf.multiPolygon(feature.geometry.coordinates);
-        const center = turf.center(polygon);
-        const lineStringFeature = format.readFeature(center);
-        lineStringFeature.setProperties({
-          name: "Center of " + feature.properties.name,
-        });
-        source.addFeature(lineStringFeature);
-      }
-
-      source.getFeatures().forEach((feature) => {
-        feature.getGeometry().transform("EPSG:4326", "EPSG:3857");
+    // work with raw json
+    for (const feature of geoJson.features) {
+      const polygon = turf.multiPolygon(feature.geometry.coordinates);
+      const center = turf.center(polygon);
+      const lineStringFeature = format.readFeature(center);
+      lineStringFeature.setProperties({
+        name: "Center of " + feature.properties.name,
       });
-
-      const vectorLayer = new olVectorLayer({
-        source: source,
-      });
-
-      const rasterLayer = new TileLayer({
-        source: new OSM(),
-      });
-
-      const statesLayer = new olVectorLayer({
-        source: new olVectorSource({
-          format: new GeoJSON(),
-          features,
-        }),
-        style: styleFunctionStates,
-      });
-
-      const map = new Map({
-        layers: [rasterLayer, vectorLayer, statesLayer],
-        target: document.getElementById("map"),
-        view: new View({
-          center: fromLonLat([-90.81070553065938, 40.716527262756514]),
-          zoom: 4,
-        }),
-        overlays: [overlay],
-      });
-
-      map.on("singleclick", function (event) {
-        const features = [];
-        map.forEachFeatureAtPixel(event.pixel, function (feature, layer) {
-          features.push(feature);
-        });
-        if (features.length > 0) {
-          const coordinate = event.coordinate;
-          let popupString = "";
-          for (let i = 0; i < features.length; i++) {
-            const properties = features[i].getProperties();
-            let s;
-            if (properties.name) {
-              s = properties.name;
-            } else {
-              s = properties.text;
-            }
-            popupString += `Feature ${i}: ${s}<br />`;
-          }
-
-          content.innerHTML = popupString;
-          overlay.setPosition(coordinate);
-        }
-      });
-    } catch (err) {
-      notification.error({
-        placement: "topLeft",
-        description:
-          "Unable to get data from remote. Try to use local data if problem persists.",
-      });
-      new Map({
-        layers: [
-          new TileLayer({
-            source: new OSM(),
-          }),
-        ],
-        target: document.getElementById("map"),
-        view: new View({
-          center: fromLonLat([-90.81070553065938, 40.716527262756514]),
-          zoom: 4,
-        }),
-        overlays: [overlay],
-      });
+      source.addFeature(lineStringFeature);
     }
+
+    source.getFeatures().forEach((feature) => {
+      feature.getGeometry().transform("EPSG:4326", "EPSG:3857");
+    });
+
+    const vectorLayer = new olVectorLayer({
+      source: source,
+    });
+
+    const rasterLayer = new TileLayer({
+      source: new OSM(),
+    });
+
+    const statesLayer = new olVectorLayer({
+      source: new olVectorSource({
+        format: new GeoJSON(),
+        features,
+      }),
+      style: styleFunctionStates,
+    });
+
+    const map = new Map({
+      layers: [rasterLayer, vectorLayer, statesLayer],
+      target: document.getElementById("map"),
+      view: new View({
+        center: fromLonLat([-90.81070553065938, 40.716527262756514]),
+        zoom: 4,
+      }),
+      overlays: [overlay],
+    });
+
+    map.on("singleclick", function (event) {
+      const features = [];
+      map.forEachFeatureAtPixel(event.pixel, function (feature, layer) {
+        features.push(feature);
+      });
+      if (features.length > 0) {
+        const coordinate = event.coordinate;
+        let popupString = "";
+        for (let i = 0; i < features.length; i++) {
+          const properties = features[i].getProperties();
+          let s;
+          if (properties.name) {
+            s = properties.name;
+          } else {
+            s = properties.text;
+          }
+          popupString += `Feature ${i}: ${s}<br />`;
+        }
+
+        content.innerHTML = popupString;
+        overlay.setPosition(coordinate);
+      }
+    });
   }
 
   render() {
