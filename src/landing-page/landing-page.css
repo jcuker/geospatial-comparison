@@ -7,30 +7,26 @@
   justify-content: space-around;
 }
 
-.leaflet {
+.divider {
+  padding: 0px;
+  margin: 0px;
+  border-top: 1px solid rgb(97, 97, 97);
+}
+
+.framework {
   width: 100vw;
   text-align: center;
 }
 
-.leaflet:hover {
+#leaflet:hover {
   background: rgba(195, 227, 121, 0.8);
 }
 
-.ol {
-  width: 100vw;
-  text-align: center;
-}
-
-.ol:hover {
+#ol:hover {
   background: rgba(114, 195, 210, 0.8);
 }
 
-.mapbox {
-  width: 100vw;
-  text-align: center;
-}
-
-.mapbox:hover {
+#mapbox:hover {
   background: rgba(70, 104, 242, 0.8);
 }
 

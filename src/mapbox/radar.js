@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, notification } from "antd";
 import { CaretRightOutlined, PauseOutlined } from "@ant-design/icons";
+import * as mapbox from "mapbox-gl/dist/mapbox-gl.js";
 
 export default class Radar extends React.Component {
-  L = window.L;
+  map = undefined;
 
   radarLayers = [];
   timestamps = [];
@@ -18,7 +19,7 @@ export default class Radar extends React.Component {
   }
 
   async componentDidMount() {
-    document.title = "Leaflet | Radar Example";
+    document.title = "Mapbox | Radar Example";
 
     notification.destroy();
     notification.info({
@@ -29,12 +30,21 @@ export default class Radar extends React.Component {
       duration: 5,
     });
 
-    this.map = this.L.map("map").setView([37.71859, -92.007813], 5);
+    mapbox.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
-    this.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '& <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(this.map);
+    this.map = new mapbox.Map({
+      container: "map",
+      style: "mapbox://styles/mapbox/streets-v11",
+      center: [0, 0],
+      zoom: 1,
+    });
+
+    this.map.addControl(new mapbox.NavigationControl(), "top-left");
+    this.map.on("load", () => {
+      this.map.addSource("radar", {
+        type: "raster",
+      });
+    });
 
     this.timestamps = await (
       await fetch("https://api.rainviewer.com/public/maps.json")
@@ -50,21 +60,26 @@ export default class Radar extends React.Component {
    * @param ts
    */
   addLayer = (ts) => {
-    if (!this.radarLayers[ts]) {
-      this.radarLayers[ts] = new this.L.TileLayer(
+    const obj = {
+      id: `layer-${ts}`,
+      type: "raster",
+      url:
         "https://tilecache.rainviewer.com/v2/radar/" +
-          ts +
-          "/256/{z}/{x}/{y}/2/1_1.png",
-        {
-          tileSize: 256,
-          opacity: 0.001,
-          zIndex: ts,
-        }
-      );
+        ts +
+        "/256/{z}/{x}/{y}/2/1_1.png",
+      tileSize: 256,
+      opacity: 0.001,
+      zIndex: ts,
+      scheme: "xyz",
+      source: "radar",
+    };
+
+    if (!this.radarLayers[ts]) {
+      this.radarLayers[ts] = { ...obj };
     }
 
-    if (!this.map.hasLayer(this.radarLayers[ts])) {
-      this.map.addLayer(this.radarLayers[ts]);
+    if (!this.map.getLayer(obj.id)) {
+      this.map.addLayer({ ...obj });
     }
   };
 
@@ -88,10 +103,11 @@ export default class Radar extends React.Component {
     this.animationPosition = position;
 
     if (this.radarLayers[currentTimestamp]) {
-      this.radarLayers[currentTimestamp].setOpacity(0);
+      const foundLayer = this.map.getLayer(
+        this.radarLayers[currentTimestamp].id
+      );
+      if (foundLayer) this.map.removeLayer(foundLayer.id);
     }
-
-    this.radarLayers[nextTimestamp].setOpacity(100);
   };
 
   /**
