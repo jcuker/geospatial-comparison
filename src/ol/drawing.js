@@ -4,7 +4,6 @@ import Polygon from "ol/geom/Polygon";
 import Draw, { createBox, createRegularPolygon } from "ol/interaction/Draw";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import Map from "ol/Map";
-import "ol/ol.css";
 import { OSM, Vector as VectorSource } from "ol/source";
 import View from "ol/View";
 import React from "react";
@@ -106,19 +105,8 @@ export default class Drawing extends React.Component {
 
   render() {
     return (
-      <div
-        style={{
-          height: "100%",
-          width: "100%",
-        }}
-      >
-        <div
-          id="map"
-          style={{
-            height: "100%",
-            width: "100%",
-          }}
-        ></div>
+      <>
+        <div id="map"></div>
         <form style={{ position: "absolute", bottom: 0, left: 5 }}>
           <label>Shape type &nbsp;</label>
           <select
@@ -135,7 +123,7 @@ export default class Drawing extends React.Component {
             <option value="Star">Star</option>
           </select>
         </form>
-      </div>
+      </>
     );
   }
 }

@@ -8,14 +8,12 @@ import Mapbox from "./mapbox";
 export default function App() {
   return (
     <Router>
-      <div>
-        <Switch>
-          <Route path="/leaflet/:id" component={Leaflet}></Route>
-          <Route path="/ol/:id" component={OpenLayers}></Route>
-          <Route path="/mapbox/:id" component={Mapbox}></Route>
-          <Route path="/" component={LandingPage}></Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/leaflet/:id" component={Leaflet}></Route>
+        <Route path="/ol/:id" component={OpenLayers}></Route>
+        <Route path="/mapbox/:id" component={Mapbox}></Route>
+        <Route path="/" component={LandingPage}></Route>
+      </Switch>
     </Router>
   );
 }

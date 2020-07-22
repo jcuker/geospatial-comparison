@@ -4,21 +4,22 @@ export default class Simple extends React.Component {
   componentDidMount() {
     document.title = "Leaflet | Simple Example";
 
+    // Since Leaftet is added via the root index.html file, we have to get access to the L object via the window.
     const L = window.L;
 
-    const mymap = L.map("map").setView([0, 0], 2);
+    const map = L.map("map").setView([0, 0], 2);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '& <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(mymap);
+    }).addTo(map);
   }
 
   render() {
     return (
-      <div style={{ height: "100%", width: "100%" }}>
-        <div id="map" style={{ height: "100%", width: "100%" }} />
-      </div>
+      <>
+        <div id="map" />
+      </>
     );
   }
 }

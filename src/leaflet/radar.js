@@ -129,8 +129,8 @@ export default class Radar extends React.Component {
 
   render() {
     return (
-      <div style={{ height: "100%", width: "100%" }}>
-        <div id="map" style={{ height: "100%", width: "100%" }} />
+      <>
+        <div id="map" />
         <Button
           type="primary"
           style={{
@@ -145,7 +145,7 @@ export default class Radar extends React.Component {
         >
           {this.state.playing ? <PauseOutlined /> : <CaretRightOutlined />}
         </Button>
-      </div>
+      </>
     );
   }
 }

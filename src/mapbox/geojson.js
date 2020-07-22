@@ -1,6 +1,5 @@
 import React from "react";
 import * as mapbox from "mapbox-gl/dist/mapbox-gl.js";
-import "./popup.css";
 
 export default class Simple extends React.Component {
   async componentDidMount() {
@@ -112,9 +111,9 @@ export default class Simple extends React.Component {
 
   render() {
     return (
-      <div style={{ height: "100vh", width: "100vw" }}>
-        <div style={{ height: "100%", width: "100%" }} id="map"></div>
-      </div>
+      <>
+        <div id="map"></div>
+      </>
     );
   }
 }

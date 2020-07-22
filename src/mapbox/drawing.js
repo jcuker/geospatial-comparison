@@ -32,9 +32,9 @@ export default class Simple extends React.Component {
 
   render() {
     return (
-      <div style={{ height: "100vh", width: "100vw" }}>
-        <div style={{ height: "100%", width: "100%" }} id="map"></div>
-      </div>
+      <>
+        <div id="map"></div>
+      </>
     );
   }
 }

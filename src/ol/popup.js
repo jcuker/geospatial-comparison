@@ -1,10 +1,8 @@
-import "ol/ol.css";
 import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import XYZ from "ol/source/XYZ";
 import React from "react";
 import * as olProj from "ol/proj";
-import "./popup.css";
 import Overlay from "ol/Overlay";
 import { toStringHDMS } from "ol/coordinate";
 
@@ -63,9 +61,10 @@ export default class Popup extends React.Component {
   }
 
   render() {
+    // Popup MUST have a parent div. You cannot use React's fragments for popups with OL!
     return (
-      <div>
-        <div id="map" className="map"></div>
+      <div className="wrapper">
+        <div id="map"></div>
         <div id="popup" className="ol-popup">
           <div id="popup-closer" className="ol-popup-closer"></div>
           <div id="popup-content"></div>

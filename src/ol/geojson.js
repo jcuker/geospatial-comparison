@@ -8,7 +8,6 @@ import { OSM } from "ol/source";
 import olVectorSource from "ol/source/Vector";
 import View from "ol/View";
 import React from "react";
-import "./popup.css";
 import { styleFunctionStates, styleFunctionTwitter } from "./util";
 
 export default class GeoJson extends React.Component {
@@ -103,8 +102,8 @@ export default class GeoJson extends React.Component {
 
   render() {
     return (
-      <div>
-        <div id="map" style={{ height: "100vh", width: "100vw" }}></div>;
+      <div className="wrapper">
+        <div id="map"></div>;
         <div id="popup" className="ol-popup">
           <div id="popup-closer" className="ol-popup-closer"></div>
           <div id="popup-content"></div>

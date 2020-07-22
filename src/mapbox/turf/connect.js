@@ -60,37 +60,6 @@ export default class Connect extends React.Component {
         type: "line",
       });
 
-      //   map.on("click", function (e) {
-      //     const features = map.queryRenderedFeatures(e.point);
-      //     if (!features || features.length <= 0) {
-      //       return;
-      //     }
-
-      //     let descStr = "";
-      //     for (let i = 0; i < features.length; i++) {
-      //       const properties = features[i].properties;
-      //       if (properties.name) {
-      //         descStr += `Feature ${i}: ${properties.name}<br/>`;
-      //       } else if (properties.text) {
-      //         descStr += `Feature ${i}: ${properties.user} tweeted "${properties.text}"</br>`;
-      //       } else {
-      //         const unknownString =
-      //           Object.keys(properties).length > 0
-      //             ? JSON.stringify(properties)
-      //             : features[i].layer.id || "Unknown Layer";
-
-      //         descStr += `Feature ${i}: ${unknownString}<br/>`;
-      //       }
-      //     }
-
-      //     const coordinates = e.lngLat;
-
-      //     new mapbox.Popup()
-      //       .setLngLat(coordinates)
-      //       .setHTML(`<p>${descStr}</p>`)
-      //       .addTo(map);
-      //   });
-
       // Change the cursor to a pointer when the mouse is over the states layer.
       map.on("mouseenter", "twitter", function () {
         map.getCanvas().style.cursor = "pointer";
@@ -105,9 +74,9 @@ export default class Connect extends React.Component {
 
   render() {
     return (
-      <div style={{ height: "100vh", width: "100vw" }}>
-        <div style={{ height: "100%", width: "100%" }} id="map"></div>
-      </div>
+      <>
+        <div id="map"></div>
+      </>
     );
   }
 }

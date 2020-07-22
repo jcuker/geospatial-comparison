@@ -3,12 +3,10 @@ import { Map, View } from "ol";
 import GeoJSON from "ol/format/GeoJSON";
 import TileLayer from "ol/layer/Tile";
 import olVectorLayer from "ol/layer/Vector";
-import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
 import { OSM } from "ol/source";
 import olVectorSource from "ol/source/Vector";
 import React from "react";
-import "../popup.css";
 import { styleFunctionStates } from "../util";
 import Overlay from "ol/Overlay";
 
@@ -120,8 +118,8 @@ export default class Center extends React.Component {
 
   render() {
     return (
-      <div>
-        <div id="map" className="map"></div>
+      <div className="wrapper">
+        <div id="map"></div>
         <div id="popup" className="ol-popup">
           <div id="popup-closer" className="ol-popup-closer"></div>
           <div id="popup-content"></div>

@@ -1,7 +1,7 @@
 /**
  *
  * There exists a plugin for drawing here: https://github.com/Leaflet/Leaflet.draw
- * This demo is restricted to vanilla features though.
+ * This demo is restricted to vanilla features though. If you NEED drawing consider the above library.
  */
 
 import React from "react";
@@ -35,35 +35,35 @@ export default class Drawing extends React.Component {
 
     const L = window.L;
 
-    const mymap = L.map("map").setView([51.505, -0.09], 13);
+    const map = L.map("map").setView([51.505, -0.09], 13);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '& <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(mymap);
+    }).addTo(map);
 
-    const marker = L.marker([51.5, -0.09]).addTo(mymap);
+    const marker = L.marker([51.5, -0.09]).addTo(map);
 
     const circle = L.circle([51.508, -0.11], {
       color: "red",
       fillColor: "#f03",
       fillOpacity: 0.5,
       radius: 500,
-    }).addTo(mymap);
+    }).addTo(map);
 
     const polygon = L.polygon([
       [51.509, -0.08],
       [51.503, -0.06],
       [51.51, -0.047],
-    ]).addTo(mymap);
+    ]).addTo(map);
 
     marker.bindPopup("I am a marker.");
     circle.bindPopup("I am a circle.");
     polygon.bindPopup("I am a polygon.");
 
-    this.map = mymap;
+    this.map = map;
 
-    mymap.on("click", (e) => {
+    map.on("click", (e) => {
       if (this.state.gesture) {
         const startingLatLng = this.state.gesture.inProgressRect.startingLatLng;
         const endingLatLng = e.latlng;
@@ -87,7 +87,7 @@ export default class Drawing extends React.Component {
       }
     });
 
-    mymap.on("mousemove", (e) => {
+    map.on("mousemove", (e) => {
       if (
         this.state.gesture &&
         this.state.gesture.inProgressRect &&
@@ -171,8 +171,8 @@ export default class Drawing extends React.Component {
 
   render() {
     return (
-      <div style={{ height: "100%", width: "100%" }}>
-        <div id="map" style={{ height: "100%", width: "100%" }} />
+      <>
+        <div id="map" />
         <Button
           type="primary"
           onClick={this.openInfo}
@@ -203,7 +203,7 @@ export default class Drawing extends React.Component {
             additional comments.
           </p>
         </Modal>
-      </div>
+      </>
     );
   }
 }

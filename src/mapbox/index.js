@@ -8,6 +8,7 @@ import Radar from "./radar";
 import Simple from "./simple";
 import Center from "./turf/center";
 import Connect from "./turf/connect";
+import "./mapbox.css";
 
 export default function Mapbox() {
   function mapResolver(key) {

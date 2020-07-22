@@ -1,4 +1,3 @@
-import "ol/ol.css";
 import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import XYZ from "ol/source/XYZ";
@@ -26,13 +25,9 @@ export default class Simple extends React.Component {
 
   render() {
     return (
-      <div
-        id="map"
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
-      ></div>
+      <>
+        <div id="map"></div>
+      </>
     );
   }
 }

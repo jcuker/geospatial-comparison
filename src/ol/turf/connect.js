@@ -3,12 +3,10 @@ import { Map, View } from "ol";
 import GeoJSON from "ol/format/GeoJSON";
 import TileLayer from "ol/layer/Tile";
 import olVectorLayer from "ol/layer/Vector";
-import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
 import { OSM } from "ol/source";
 import olVectorSource from "ol/source/Vector";
 import React from "react";
-import "../popup.css";
 import { styleFunctionTwitter } from "../util";
 
 export default class Connect extends React.Component {
@@ -68,13 +66,9 @@ export default class Connect extends React.Component {
 
   render() {
     return (
-      <div
-        id="map"
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
-      ></div>
+      <>
+        <div id="map"></div>
+      </>
     );
   }
 }

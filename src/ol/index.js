@@ -10,6 +10,10 @@ import Radar from "./radar";
 import Simple from "./simple";
 import Center from "./turf/center";
 import Connect from "./turf/connect";
+// custom css to style popups
+import "./ol.css";
+// Openlayer's OWN css
+import "ol/ol.css";
 
 export default class OpenLayers extends React.Component {
   constructor() {

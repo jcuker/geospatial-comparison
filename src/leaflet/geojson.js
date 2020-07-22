@@ -22,7 +22,6 @@ export default class GeoJson extends React.Component {
 
     L.geoJSON(states, {
       onEachFeature: (feature, layer) => {
-        // does this feature have a property named popupContent?
         if (feature.properties) {
           const properties = feature.properties;
           this.popupElementStates(layer, properties);
@@ -32,7 +31,6 @@ export default class GeoJson extends React.Component {
 
     L.geoJSON(twitter, {
       onEachFeature: (feature, layer) => {
-        // does this feature have a property named popupContent?
         if (feature.properties) {
           const properties = feature.properties;
           this.popupElementTwitter(layer, properties);
@@ -51,9 +49,9 @@ export default class GeoJson extends React.Component {
 
   render() {
     return (
-      <div style={{ height: "100%", width: "100%" }}>
-        <div id="map" style={{ height: "100%", width: "100%" }} />
-      </div>
+      <>
+        <div id="map" />
+      </>
     );
   }
 }

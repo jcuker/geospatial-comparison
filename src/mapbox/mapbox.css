@@ -2,3 +2,8 @@
   font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
   word-break: break-all;
 }
+
+#map {
+  height: 100%;
+  width: 100%;
+}

@@ -1,4 +1,3 @@
-import "ol/ol.css";
 import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import XYZ from "ol/source/XYZ";
@@ -21,7 +20,6 @@ import {
 import olVectorLayer from "ol/layer/Vector";
 import olVectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
-import "./popup.css";
 import Overlay from "ol/Overlay";
 import olClusterSource from "ol/source/Cluster";
 
@@ -446,8 +444,8 @@ export default class Simple extends React.Component {
     const timeDisplay = this.getTimeDisplay();
 
     return (
-      <div style={{ height: "100%", width: "100%" }}>
-        <div id="map" style={{ height: "100%", width: "100%" }} />
+      <div className="wrapper">
+        <div id="map" />
         <div id="popup" className="ol-popup">
           <div id="popup-closer" className="ol-popup-closer"></div>
           <div id="popup-content"></div>
@@ -467,7 +465,6 @@ export default class Simple extends React.Component {
         >
           Toggle Tweets
         </Button>
-
         <Button
           type="primary"
           onClick={() => this.setState({ showRadar: !this.state.showRadar })}
