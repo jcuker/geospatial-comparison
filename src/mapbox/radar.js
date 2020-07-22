@@ -6,7 +6,7 @@ import * as mapbox from "mapbox-gl/dist/mapbox-gl.js";
 export default class Radar extends React.Component {
   map = undefined;
 
-  radarLayers = [];
+  radarObjects = [];
   timestamps = [];
   animationTimer = undefined;
   animationPosition = -1;
@@ -32,23 +32,51 @@ export default class Radar extends React.Component {
 
     mapbox.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
-    this.map = new mapbox.Map({
-      container: "map",
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [0, 0],
-      zoom: 1,
-    });
-
-    this.map.addControl(new mapbox.NavigationControl(), "top-left");
-    this.map.on("load", () => {
-      this.map.addSource("radar", {
-        type: "raster",
-      });
-    });
-
     this.timestamps = await (
       await fetch("https://api.rainviewer.com/public/maps.json")
     ).json();
+
+    const tiles = [];
+    const sources = [];
+
+    for (const ts of this.timestamps) {
+      const url = `https://tilecache.rainviewer.com/v2/radar/${ts}/256/{z}/{x}/{y}/2/1_1.png`;
+      const key = `radar-src-${ts}`;
+      const source = {};
+      source[key] = {
+        type: "raster",
+        tiles: [url],
+        tileSize: 256,
+      };
+
+      const layer = {
+        id: `radar-layer-${ts}`,
+        type: "raster",
+        source: key,
+        minzoom: 0,
+        maxzoom: 22,
+        layout: {
+          visibility: "visible",
+        },
+      };
+
+      tiles.push(url);
+      sources.push(source);
+
+      this.radarObjects[ts] = {
+        source,
+        layer,
+      };
+    }
+
+    this.map = new mapbox.Map({
+      container: "map", // container id
+      style: "mapbox://styles/mapbox/streets-v11",
+      center: [-74.5, 40], // starting position
+      zoom: 2, // starting zoom
+    });
+
+    this.map.addControl(new mapbox.NavigationControl(), "top-left");
   }
 
   componentWillUnmount() {
@@ -60,26 +88,14 @@ export default class Radar extends React.Component {
    * @param ts
    */
   addLayer = (ts) => {
-    const obj = {
-      id: `layer-${ts}`,
-      type: "raster",
-      url:
-        "https://tilecache.rainviewer.com/v2/radar/" +
-        ts +
-        "/256/{z}/{x}/{y}/2/1_1.png",
-      tileSize: 256,
-      opacity: 0.001,
-      zIndex: ts,
-      scheme: "xyz",
-      source: "radar",
-    };
+    const obj = this.radarObjects[ts];
 
-    if (!this.radarLayers[ts]) {
-      this.radarLayers[ts] = { ...obj };
-    }
-
-    if (!this.map.getLayer(obj.id)) {
-      this.map.addLayer({ ...obj });
+    if (!this.map.getLayer(obj.layer.id)) {
+      const sourceId = Object.keys(obj.source).find((obj) => obj.includes(ts));
+      this.map.addSource(sourceId, obj.source[sourceId]);
+      this.map.addLayer(obj.layer);
+    } else {
+      this.map.setLayoutProperty(obj.layer.id, "visibility", "visible");
     }
   };
 
@@ -102,11 +118,13 @@ export default class Radar extends React.Component {
 
     this.animationPosition = position;
 
-    if (this.radarLayers[currentTimestamp]) {
-      const foundLayer = this.map.getLayer(
-        this.radarLayers[currentTimestamp].id
-      );
-      if (foundLayer) this.map.removeLayer(foundLayer.id);
+    if (currentTimestamp) {
+      const obj = this.radarObjects[currentTimestamp];
+
+      const layer = this.map.getLayer(obj.layer.id);
+      if (layer) {
+        this.map.setLayoutProperty(layer.id, "visibility", "none");
+      }
     }
   };
 

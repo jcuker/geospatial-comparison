@@ -162,6 +162,7 @@ export default class Simple extends React.Component {
       placement: "topLeft",
       duration: 0,
     });
+
     let json;
 
     try {
@@ -185,6 +186,7 @@ export default class Simple extends React.Component {
     // do some logic for each feature
     json.features.map((feature) => {
       const props = feature.properties;
+
       // this helps in the case we have other non-twitter features at the same pixel when clicking
       props["twitter"] = true;
 
