@@ -7,6 +7,8 @@ export default class Simple extends React.Component {
 
     mapbox.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
+    // Construct a new map object.
+    // NOTE: Be sure to set the mapbox.accessToken before calling this!
     const map = new mapbox.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",

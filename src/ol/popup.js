@@ -10,12 +10,12 @@ export default class Popup extends React.Component {
   componentDidMount() {
     document.title = "OpenLayers | Popup Example";
 
+    // Obtain reference to the HTMLElements that will house the popup content
     const container = document.getElementById("popup");
     const content = document.getElementById("popup-content");
     const closer = document.getElementById("popup-closer");
-    /**
-     * Create an overlay to anchor the popup to the map.
-     */
+
+    // Create an overlay to anchor the popup to the map
     const overlay = new Overlay({
       element: container,
       autoPan: true,
@@ -24,15 +24,14 @@ export default class Popup extends React.Component {
       },
     });
 
-    /**
-     * Add a click handler to hide the popup.
-     * @return {boolean} Don't follow the href.
-     */
+    // Add a click handler to hide the popup
     closer.onclick = function () {
       overlay.setPosition(undefined);
       closer.blur();
       return false;
     };
+
+    // Create a new map object that uses OpenStreetMap as it's base layer and attach the above overlay
     const map = new Map({
       target: "map",
       layers: [
@@ -48,11 +47,11 @@ export default class Popup extends React.Component {
         zoom: 2,
       }),
     });
-    /**
-     * Add a click handler to the map to render the popup.
-     */
+
+    // Add a click handler to the map to render the popup
     map.on("singleclick", function (evt) {
       const coordinate = evt.coordinate;
+      // conver the cordinate to a 'readable' string
       const hdms = toStringHDMS(olProj.toLonLat(coordinate));
 
       content.innerHTML = "<p>You clicked here:</p><code>" + hdms + "</code>";
