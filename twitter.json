@@ -1,863 +1,1063 @@
 {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "id": "00a4668e-fd01-471c-9814-04601b007bb4",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:EPSG::4326"
+        }
     },
-    {
-      "type": "Feature",
-      "id": "00a4668e-fd01-4e18-a0dc-78d1416ea425",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "70a4668e-fc25-4e38-ab12-f6844a1af0c2",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "a0a4668e-fc25-4f1c-886d-80194ee2b056",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "10a4668e-fd01-4e18-94c9-9ed5c5be8648",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "a0a4668e-fc25-4e38-bb9d-50ca33a509ca",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "20a4668e-fd01-4e1c-9d1e-53e5fdaa0d6e",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "20a4668e-fc25-4f1c-9297-296d3b8f6875",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "e0a4668e-fd01-4e18-9a54-a5da25423868",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "30a4668e-fc21-4f38-a4c6-a2dd41b7b1d2",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "d0a4668e-fd01-471c-bf88-030b75913b9b",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "30a4668e-fd01-4e18-94b0-a11576d3c40d",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "50a4668e-fd01-471c-a8bc-e3785012430e",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "50a4668e-fc25-4e38-8262-463766261bba",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "c0a4668e-fd01-471c-ad98-b32bab4f672c",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "a0a4668e-fc25-4e1c-aa95-d48a75e01e4b",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "e0a4668e-fd01-4e18-956f-0ee95c05a083",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "c0a4668e-fd01-4738-b326-463e49295bb4",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "50a4668e-fc25-4e1c-9e36-60f85b16ad1b",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "00a4668e-fd01-471c-adf5-163b5c3ca19a",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "40a4668e-fc25-4e1c-8971-a5ef10cf6fd0",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "c0a4668e-fd01-471c-a762-42a2400db10c",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "00a4668e-fd01-4738-bf21-68302a06956e",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "50a4668e-fc25-4e38-a041-86565a9cabb3",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "f0a4668e-fd01-4e18-bf30-685f8a322bcf",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "10a4668e-fc21-4f38-a08b-53087f1fdde0",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "c0a4668e-fd01-4e18-b1bd-1dc9834b9fea",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "c0a4668e-fc25-4e1c-a162-0db552cd8b1a",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "10a4668e-fd01-4e18-aa34-cb25f555e916",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text."
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "c0a4668e-fd01-4e18-bb57-670705796dbe",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "90a4668e-fc21-4f38-992d-bc64a651f7bd",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "70a4668e-fd01-4738-a0ce-3a0563b231ed",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "90a4668e-fc21-4f38-b534-0a206cabce5a",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "30a4668e-fd01-471c-97c6-af97aad7ea48",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "50a4668e-fc25-4e1c-a0ca-33d87f56cec6",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "f0a4668e-fc25-4f18-9367-faae7feb4826",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "e0a4668e-fd01-4e18-9aca-afb9c11b9e94",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "90a4668e-fd01-471c-ae41-fec645aa8fe8",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "30a4668e-fd01-4e1c-af91-e0c327a844d3",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "b0a4668e-fd01-4738-8f76-69fb2502acb3",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "60a4668e-fd01-471c-92ac-875482165698",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "20a4668e-fc21-4f38-a339-da64f7549695",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "40a4668e-fc21-4f38-949a-83887b657c58",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "50a4668e-fc25-4f1c-ba42-fc1bd72596fb",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "d0a4668e-fc25-4e1c-a155-e9159e016681",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "20a4668e-fd01-4738-8ace-2820424d22aa",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "c0a4668e-fd01-4e18-b82d-166de825705e",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "a0a4668e-fd01-4e1c-aa76-86b039d3d487",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "f0a4668e-fd01-4738-be55-7dbb6eb24e9b",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.0768885,
-          31.1688935
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "a0a4668e-fc25-4e38-b550-0319921ea4fe",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -100.07688904,
-          31.16889286
-        ]
-      },
-      "geometry_name": "geom",
-      "properties": {
-        "text": "Example text.",
-        "user": "Example User",
-        "place": ".*"
-      }
-    }
-  ],
-  "totalFeatures": 0,
-  "numberMatched": 0,
-  "numberReturned": 50,
-  "timeStamp": "2020-06-03T01:52:37.266Z",
-  "crs": {
-    "type": "name",
-    "properties": {
-      "name": "urn:ogc:def:crs:EPSG::4326"
-    }
-  }
+    "features": [
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.81070553065938,
+                    44.716527262756514
+                ]
+            },
+            "coordinates": [
+                -73.81070553065938,
+                44.716527262756514
+            ],
+            "id": "00a4668e-fd01-471c-9814-04601b007bb4",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.09649632771877,
+                    43.335335313189226
+                ]
+            },
+            "coordinates": [
+                -73.09649632771877,
+                43.335335313189226
+            ],
+            "id": "00a4668e-fd01-4e18-a0dc-78d1416ea425",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -107.37579591748893,
+                    42.5831470849894
+                ]
+            },
+            "coordinates": [
+                -107.37579591748893,
+                42.5831470849894
+            ],
+            "id": "70a4668e-fc25-4e38-ab12-f6844a1af0c2",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -121.08590462316455,
+                    36.92956222940704
+                ]
+            },
+            "coordinates": [
+                -121.08590462316455,
+                36.92956222940704
+            ],
+            "id": "a0a4668e-fc25-4f1c-886d-80194ee2b056",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.21326164302137,
+                    25.847200390471784
+                ]
+            },
+            "coordinates": [
+                -117.21326164302137,
+                25.847200390471784
+            ],
+            "id": "10a4668e-fd01-4e18-94c9-9ed5c5be8648",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.95960075991368,
+                    36.86211462375161
+                ]
+            },
+            "coordinates": [
+                -104.95960075991368,
+                36.86211462375161
+            ],
+            "id": "a0a4668e-fc25-4e38-bb9d-50ca33a509ca",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.64338951310773,
+                    41.124092615651335
+                ]
+            },
+            "coordinates": [
+                -84.64338951310773,
+                41.124092615651335
+            ],
+            "id": "20a4668e-fd01-4e1c-9d1e-53e5fdaa0d6e",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -107.48368596282116,
+                    37.5397428368855
+                ]
+            },
+            "coordinates": [
+                -107.48368596282116,
+                37.5397428368855
+            ],
+            "id": "20a4668e-fc25-4f1c-9297-296d3b8f6875",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.56178340144257,
+                    26.6468296590299
+                ]
+            },
+            "coordinates": [
+                -96.56178340144257,
+                26.6468296590299
+            ],
+            "id": "e0a4668e-fd01-4e18-9a54-a5da25423868",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.95071300552031,
+                    36.56035768231485
+                ]
+            },
+            "coordinates": [
+                -102.95071300552031,
+                36.56035768231485
+            ],
+            "id": "30a4668e-fc21-4f38-a4c6-a2dd41b7b1d2",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.68032328711652,
+                    34.32372946508693
+                ]
+            },
+            "coordinates": [
+                -73.68032328711652,
+                34.32372946508693
+            ],
+            "id": "d0a4668e-fd01-471c-bf88-030b75913b9b",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.47990941870177,
+                    42.43400133243905
+                ]
+            },
+            "coordinates": [
+                -98.47990941870177,
+                42.43400133243905
+            ],
+            "id": "30a4668e-fd01-4e18-94b0-a11576d3c40d",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.12436297919612,
+                    40.26246962479587
+                ]
+            },
+            "coordinates": [
+                -85.12436297919612,
+                40.26246962479587
+            ],
+            "id": "50a4668e-fd01-471c-a8bc-e3785012430e",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -91.24143104620268,
+                    31.376818673793053
+                ]
+            },
+            "coordinates": [
+                -91.24143104620268,
+                31.376818673793053
+            ],
+            "id": "50a4668e-fc25-4e38-8262-463766261bba",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.05698763856013,
+                    42.37623341556161
+                ]
+            },
+            "coordinates": [
+                -71.05698763856013,
+                42.37623341556161
+            ],
+            "id": "c0a4668e-fd01-471c-ad98-b32bab4f672c",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.90508554131131,
+                    47.41887631545384
+                ]
+            },
+            "coordinates": [
+                -84.90508554131131,
+                47.41887631545384
+            ],
+            "id": "a0a4668e-fc25-4e1c-aa95-d48a75e01e4b",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -105.41023169007244,
+                    36.24087411078102
+                ]
+            },
+            "coordinates": [
+                -105.41023169007244,
+                36.24087411078102
+            ],
+            "id": "e0a4668e-fd01-4e18-956f-0ee95c05a083",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -101.22672455373012,
+                    27.33741691911741
+                ]
+            },
+            "coordinates": [
+                -101.22672455373012,
+                27.33741691911741
+            ],
+            "id": "c0a4668e-fd01-4738-b326-463e49295bb4",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.13733274954238,
+                    44.37072350304033
+                ]
+            },
+            "coordinates": [
+                -76.13733274954238,
+                44.37072350304033
+            ],
+            "id": "50a4668e-fc25-4e1c-9e36-60f85b16ad1b",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -88.69543725170736,
+                    37.77292424402415
+                ]
+            },
+            "coordinates": [
+                -88.69543725170736,
+                37.77292424402415
+            ],
+            "id": "00a4668e-fd01-471c-adf5-163b5c3ca19a",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.29669073334486,
+                    35.73385256072003
+                ]
+            },
+            "coordinates": [
+                -117.29669073334486,
+                35.73385256072003
+            ],
+            "id": "40a4668e-fc25-4e1c-8971-a5ef10cf6fd0",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.55313060260848,
+                    28.88246217431578
+                ]
+            },
+            "coordinates": [
+                -84.55313060260848,
+                28.88246217431578
+            ],
+            "id": "c0a4668e-fd01-471c-a762-42a2400db10c",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -114.26514062107195,
+                    40.283610026177676
+                ]
+            },
+            "coordinates": [
+                -114.26514062107195,
+                40.283610026177676
+            ],
+            "id": "00a4668e-fd01-4738-bf21-68302a06956e",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -113.08663645546906,
+                    46.75745117279084
+                ]
+            },
+            "coordinates": [
+                -113.08663645546906,
+                46.75745117279084
+            ],
+            "id": "50a4668e-fc25-4e38-a041-86565a9cabb3",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -89.7854151534944,
+                    44.29927061929449
+                ]
+            },
+            "coordinates": [
+                -89.7854151534944,
+                44.29927061929449
+            ],
+            "id": "f0a4668e-fd01-4e18-bf30-685f8a322bcf",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.01310861633033,
+                    29.460109436867143
+                ]
+            },
+            "coordinates": [
+                -99.01310861633033,
+                29.460109436867143
+            ],
+            "id": "10a4668e-fc21-4f38-a08b-53087f1fdde0",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.09352250779374,
+                    46.796276831541775
+                ]
+            },
+            "coordinates": [
+                -95.09352250779374,
+                46.796276831541775
+            ],
+            "id": "c0a4668e-fd01-4e18-b1bd-1dc9834b9fea",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.72102863576666,
+                    43.00730198641596
+                ]
+            },
+            "coordinates": [
+                -71.72102863576666,
+                43.00730198641596
+            ],
+            "id": "c0a4668e-fc25-4e1c-a162-0db552cd8b1a",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -124.10314270266137,
+                    46.44272611557059
+                ]
+            },
+            "coordinates": [
+                -124.10314270266137,
+                46.44272611557059
+            ],
+            "id": "10a4668e-fd01-4e18-aa34-cb25f555e916",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text."
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.98422740870808,
+                    41.27696459306328
+                ]
+            },
+            "coordinates": [
+                -118.98422740870808,
+                41.27696459306328
+            ],
+            "id": "c0a4668e-fd01-4e18-bb57-670705796dbe",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.72584736556902,
+                    26.857068972612048
+                ]
+            },
+            "coordinates": [
+                -85.72584736556902,
+                26.857068972612048
+            ],
+            "id": "90a4668e-fc21-4f38-992d-bc64a651f7bd",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.14804864984447,
+                    46.471863203612095
+                ]
+            },
+            "coordinates": [
+                -118.14804864984447,
+                46.471863203612095
+            ],
+            "id": "70a4668e-fd01-4738-a0ce-3a0563b231ed",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -94.06030131798379,
+                    28.56736674987253
+                ]
+            },
+            "coordinates": [
+                -94.06030131798379,
+                28.56736674987253
+            ],
+            "id": "90a4668e-fc21-4f38-b534-0a206cabce5a",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -103.13835952968219,
+                    26.879218878797108
+                ]
+            },
+            "coordinates": [
+                -103.13835952968219,
+                26.879218878797108
+            ],
+            "id": "30a4668e-fd01-471c-97c6-af97aad7ea48",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -85.04627609812145,
+                    44.553915685472674
+                ]
+            },
+            "coordinates": [
+                -85.04627609812145,
+                44.553915685472674
+            ],
+            "id": "50a4668e-fc25-4e1c-a0ca-33d87f56cec6",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -110.30216295322224,
+                    48.15988385999543
+                ]
+            },
+            "coordinates": [
+                -110.30216295322224,
+                48.15988385999543
+            ],
+            "id": "f0a4668e-fc25-4f18-9367-faae7feb4826",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -98.6483960308434,
+                    35.89771680483387
+                ]
+            },
+            "coordinates": [
+                -98.6483960308434,
+                35.89771680483387
+            ],
+            "id": "e0a4668e-fd01-4e18-9aca-afb9c11b9e94",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -82.81606102957366,
+                    27.354747099290474
+                ]
+            },
+            "coordinates": [
+                -82.81606102957366,
+                27.354747099290474
+            ],
+            "id": "90a4668e-fd01-471c-ae41-fec645aa8fe8",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.55830665618689,
+                    43.826032119089824
+                ]
+            },
+            "coordinates": [
+                -122.55830665618689,
+                43.826032119089824
+            ],
+            "id": "30a4668e-fd01-4e1c-af91-e0c327a844d3",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.47614330815907,
+                    26.129299521141014
+                ]
+            },
+            "coordinates": [
+                -90.47614330815907,
+                26.129299521141014
+            ],
+            "id": "b0a4668e-fd01-4738-8f76-69fb2502acb3",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.5318279960102,
+                    44.44400734719475
+                ]
+            },
+            "coordinates": [
+                -123.5318279960102,
+                44.44400734719475
+            ],
+            "id": "60a4668e-fd01-471c-92ac-875482165698",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.18821928233312,
+                    36.33110370113596
+                ]
+            },
+            "coordinates": [
+                -122.18821928233312,
+                36.33110370113596
+            ],
+            "id": "20a4668e-fc21-4f38-a339-da64f7549695",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.64395793949527,
+                    44.823769142296825
+                ]
+            },
+            "coordinates": [
+                -102.64395793949527,
+                44.823769142296825
+            ],
+            "id": "40a4668e-fc21-4f38-949a-83887b657c58",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.55800238891024,
+                    44.83616776055711
+                ]
+            },
+            "coordinates": [
+                -84.55800238891024,
+                44.83616776055711
+            ],
+            "id": "50a4668e-fc25-4f1c-ba42-fc1bd72596fb",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.53086118391963,
+                    39.485868083865114
+                ]
+            },
+            "coordinates": [
+                -87.53086118391963,
+                39.485868083865114
+            ],
+            "id": "d0a4668e-fc25-4e1c-a155-e9159e016681",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.38043808708441,
+                    26.628792540991643
+                ]
+            },
+            "coordinates": [
+                -77.38043808708441,
+                26.628792540991643
+            ],
+            "id": "20a4668e-fd01-4738-8ace-2820424d22aa",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -115.74419075057999,
+                    48.43426893047162
+                ]
+            },
+            "coordinates": [
+                -115.74419075057999,
+                48.43426893047162
+            ],
+            "id": "c0a4668e-fd01-4e18-b82d-166de825705e",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.3721908709975,
+                    44.662844582388004
+                ]
+            },
+            "coordinates": [
+                -96.3721908709975,
+                44.662844582388004
+            ],
+            "id": "a0a4668e-fd01-4e1c-aa76-86b039d3d487",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -102.89012464654078,
+                    32.72011056654538
+                ]
+            },
+            "coordinates": [
+                -102.89012464654078,
+                32.72011056654538
+            ],
+            "id": "f0a4668e-fd01-4738-be55-7dbb6eb24e9b",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        },
+        {
+            "geometry_name": "geom",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.00906755080968,
+                    41.695997389635586
+                ]
+            },
+            "coordinates": [
+                -81.00906755080968,
+                41.695997389635586
+            ],
+            "id": "a0a4668e-fc25-4e38-b550-0319921ea4fe",
+            "type": "Feature",
+            "properties": {
+                "text": "Example text.",
+                "place": ".*",
+                "user": "Example User"
+            }
+        }
+    ],
+    "timeStamp": "2020-06-03T01:52:37.266Z",
+    "numberReturned": 50,
+    "totalFeatures": 0,
+    "numberMatched": 0,
+    "type": "FeatureCollection"
 }
