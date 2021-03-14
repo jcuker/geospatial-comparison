@@ -1,6 +1,7 @@
 import React from "react";
 import * as mapbox from "mapbox-gl/dist/mapbox-gl.js";
-import * as turf from "@turf/turf";
+import * as turfHelpers from "@turf/helpers";
+import turfCenter from "@turf/center";
 
 export default class Center extends React.Component {
   async componentDidMount() {
@@ -20,17 +21,17 @@ export default class Center extends React.Component {
         await fetch(`${window.location.origin}/${window.location.pathname.split("/")[1]}/states.json`)
       ).json();
 
-      const turfFeatureCollection = turf.featureCollection(statesJson.features);
+      const turfFeatureCollection = turfHelpers.featureCollection(statesJson.features);
       const allCenters = [];
 
       turfFeatureCollection.features.forEach((feature) => {
-        const center = turf.center(feature);
+        const center = turfCenter(feature);
         center.properties = {
           name: `${feature.properties.name}'s center` || "",
         };
         allCenters.push(center);
       });
-      const centerFeatureCollection = turf.featureCollection(allCenters);
+      const centerFeatureCollection = turfHelpers.featureCollection(allCenters);
 
       map.addSource("states", {
         type: "geojson",

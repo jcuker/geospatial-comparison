@@ -1,4 +1,5 @@
-import * as turf from "@turf/turf";
+import * as turfHelpers from "@turf/helpers";
+import turfCenter from "@turf/center";
 import { Map, View } from "ol";
 import GeoJSON from "ol/format/GeoJSON";
 import TileLayer from "ol/layer/Tile";
@@ -52,8 +53,8 @@ export default class Center extends React.Component {
 
     // work with raw json
     for (const feature of geoJson.features) {
-      const polygon = turf.multiPolygon(feature.geometry.coordinates);
-      const center = turf.center(polygon);
+      const polygon = turfHelpers.multiPolygon(feature.geometry.coordinates);
+      const center = turfCenter(polygon);
       const lineStringFeature = format.readFeature(center);
       lineStringFeature.setProperties({
         name: "Center of " + feature.properties.name,

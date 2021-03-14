@@ -1,6 +1,5 @@
 import React from "react";
-import * as turf from "@turf/turf";
-
+import * as turfHelpers from "@turf/helpers";
 export default class Connect extends React.Component {
   async componentDidMount() {
     document.title = "Leaflet | Turf LineString";
@@ -18,14 +17,14 @@ export default class Connect extends React.Component {
       await fetch(`${window.location.origin}/${window.location.pathname.split("/")[1]}/twitter.json`)
     ).json();
 
-    const turfFeatureCollection = turf.featureCollection(twitter.features);
+    const turfFeatureCollection = turfHelpers.featureCollection(twitter.features);
 
     const flatCoords = [];
     turfFeatureCollection.features.forEach((feature) => {
       flatCoords.push(feature.geometry.coordinates);
     });
 
-    const lineString = turf.lineString(flatCoords);
+    const lineString = turfHelpers.lineString(flatCoords);
 
     L.geoJSON(twitter, {
       onEachFeature: (feature, layer) => {

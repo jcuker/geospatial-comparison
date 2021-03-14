@@ -1,4 +1,4 @@
-import * as turf from "@turf/turf";
+import * as turfHelpers from "@turf/helpers";
 import { Map, View } from "ol";
 import GeoJSON from "ol/format/GeoJSON";
 import TileLayer from "ol/layer/Tile";
@@ -33,7 +33,7 @@ export default class Connect extends React.Component {
       flatGeometry.push(feature.getGeometry().flatCoordinates);
     }
 
-    const lineString = turf.lineString(flatGeometry);
+    const lineString = turfHelpers.lineString(flatGeometry);
     const lineStringFeature = format.readFeature(lineString);
 
     source.addFeature(lineStringFeature);

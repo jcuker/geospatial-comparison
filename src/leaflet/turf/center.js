@@ -1,5 +1,6 @@
 import React from "react";
-import * as turf from "@turf/turf";
+import * as turfHelpers from "@turf/helpers";
+import turfCenter from "@turf/center";
 
 export default class Center extends React.Component {
   async componentDidMount() {
@@ -18,11 +19,11 @@ export default class Center extends React.Component {
       await fetch(`${window.location.origin}/${window.location.pathname.split("/")[1]}/states.json`)
     ).json();
 
-    const turfFeatureCollection = turf.featureCollection(states.features);
+    const turfFeatureCollection = turfHelpers.featureCollection(states.features);
     const allCenters = [];
 
     turfFeatureCollection.features.forEach((feature) => {
-      const center = turf.center(feature);
+      const center = turfCenter(feature);
       center.properties = {
         name: feature.properties.name || "",
       };
@@ -39,7 +40,7 @@ export default class Center extends React.Component {
       },
     }).addTo(mymap);
 
-    const centerFeatureCollection = turf.featureCollection(allCenters);
+    const centerFeatureCollection = turfHelpers.featureCollection(allCenters);
     L.geoJSON(centerFeatureCollection, {
       onEachFeature: (feature, layer) => {
         if (feature.properties) {

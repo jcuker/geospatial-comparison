@@ -1,6 +1,6 @@
 import React from "react";
 import * as mapbox from "mapbox-gl/dist/mapbox-gl.js";
-import * as turf from "@turf/turf";
+import * as turfHelpers from "@turf/helpers";
 
 export default class Connect extends React.Component {
   async componentDidMount() {
@@ -20,7 +20,7 @@ export default class Connect extends React.Component {
         await fetch(`${window.location.origin}/${window.location.pathname.split("/")[1]}/twitter.json`)
       ).json();
 
-      const turfFeatureCollection = turf.featureCollection(
+      const turfFeatureCollection = turfHelpers.featureCollection(
         twitterJson.features
       );
 
@@ -29,7 +29,7 @@ export default class Connect extends React.Component {
         flatCoords.push(feature.geometry.coordinates);
       });
 
-      const lineString = turf.lineString(flatCoords);
+      const lineString = turfHelpers.lineString(flatCoords);
 
       map.addSource("twitter", {
         type: "geojson",
