@@ -14,7 +14,7 @@ export default class Connect extends React.Component {
     document.title = "OpenLayers | Turf LineString";
 
     const twitterResponse = await fetch(
-      `${window.location.origin}/twitter.json`
+      `${window.location.origin}/${window.location.pathname.split("/")[1]}/twitter.json`
     );
     const geoJson = await twitterResponse.json();
 

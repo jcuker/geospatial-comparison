@@ -42,7 +42,7 @@ export default class GeoJson extends React.Component {
       const layer1 = new olVectorLayer({
         source: new olVectorSource({
           format: new GeoJSON(),
-          url: `${window.location.origin}/twitter.json`,
+          url: `${window.location.origin}/${window.location.pathname.split("/")[1]}/twitter.json`,
         }),
         style: styleFunctionTwitter,
       });
@@ -50,7 +50,7 @@ export default class GeoJson extends React.Component {
       const layer2 = new olVectorLayer({
         source: new olVectorSource({
           format: new GeoJSON(),
-          url: `${window.location.origin}/states.json`,
+          url: `${window.location.origin}/${window.location.pathname.split("/")[1]}/states.json`,
         }),
         style: styleFunctionStates,
       });

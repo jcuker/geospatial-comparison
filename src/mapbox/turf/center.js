@@ -17,7 +17,7 @@ export default class Center extends React.Component {
 
     map.on("load", async function () {
       const statesJson = await (
-        await fetch(`${window.location.origin}/states.json`)
+        await fetch(`${window.location.origin}/${window.location.pathname.split("/")[1]}/states.json`)
       ).json();
 
       const turfFeatureCollection = turf.featureCollection(statesJson.features);

@@ -15,7 +15,7 @@ export default class Connect extends React.Component {
     }).addTo(mymap);
 
     const twitter = await (
-      await fetch(`${window.location.origin}/twitter.json`)
+      await fetch(`${window.location.origin}/${window.location.pathname.split("/")[1]}/twitter.json`)
     ).json();
 
     const turfFeatureCollection = turf.featureCollection(twitter.features);

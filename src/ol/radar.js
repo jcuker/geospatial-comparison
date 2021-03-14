@@ -150,7 +150,7 @@ export default class Simple extends React.Component {
 
     const baseUrl = this.props.remote
       ? this.props.remote
-      : window.location.origin;
+      : `${window.location.origin}/${window.location.pathname.split("/")[1]}`;
 
     // Remove any current notifications and display the loading one.
     notification.destroy();

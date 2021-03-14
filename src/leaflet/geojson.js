@@ -14,10 +14,10 @@ export default class GeoJson extends React.Component {
     }).addTo(mymap);
 
     const states = await (
-      await fetch(`${window.location.origin}/states.json`)
+      await fetch(`${window.location.origin}/${window.location.pathname.split("/")[1]}/states.json`)
     ).json();
     const twitter = await (
-      await fetch(`${window.location.origin}/twitter.json`)
+      await fetch(`${window.location.origin}/${window.location.pathname.split("/")[1]}/twitter.json`)
     ).json();
 
     L.geoJSON(states, {

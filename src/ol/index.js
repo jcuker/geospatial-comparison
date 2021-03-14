@@ -26,7 +26,7 @@ export default class OpenLayers extends React.Component {
 
   async componentDidMount() {
     const jsonConfig = await (
-      await fetch(`${window.location.origin}/env.json`)
+      await fetch(`${window.location.origin}/${window.location.pathname.split("/")[1]}/env.json`)
     ).json();
 
     this.setState({

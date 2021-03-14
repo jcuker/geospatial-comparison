@@ -38,7 +38,7 @@ export default class Center extends React.Component {
       return false;
     };
 
-    const statesResponse = await fetch(`${window.location.origin}/states.json`);
+    const statesResponse = await fetch(`${window.location.origin}/${window.location.pathname.split("/")[1]}/states.json`);
     const geoJson = await statesResponse.json();
 
     const source = new olVectorSource();
