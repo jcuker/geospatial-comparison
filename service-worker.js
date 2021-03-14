@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/geospatial-comparison/precache-manifest.ed9f73e74ff833d5d2fa8dd9f9c42afc.js"
+  "/geospatial-comparison/precache-manifest.f46070c0f93186f02d89ee66da0f6550.js"
 );
 
 self.addEventListener('message', (event) => {

@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3a9deca23ebcdfb4a367590aaceef334",
+    "revision": "0225fbc123160d827d385dff4cf08945",
     "url": "/geospatial-comparison/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/geospatial-comparison/static/css/2.aeb25d07.chunk.css"
   },
   {
-    "revision": "9ad3049b55ec927cd377",
+    "revision": "ef4c0e2e5cdb2906c8ae",
     "url": "/geospatial-comparison/static/css/main.896ff756.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/geospatial-comparison/static/js/2.eccf59d7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9ad3049b55ec927cd377",
-    "url": "/geospatial-comparison/static/js/main.9e23aaa4.chunk.js"
+    "revision": "ef4c0e2e5cdb2906c8ae",
+    "url": "/geospatial-comparison/static/js/main.4f0ffae5.chunk.js"
   },
   {
     "revision": "ec7a5906e0f7af3ff3c2",
