@@ -1,25 +1,23 @@
 {
   "files": {
-    "main.css": "/geospatial-comparison/static/css/main.896ff756.chunk.css",
-    "main.js": "/geospatial-comparison/static/js/main.4f0ffae5.chunk.js",
-    "main.js.map": "/geospatial-comparison/static/js/main.4f0ffae5.chunk.js.map",
-    "runtime-main.js": "/geospatial-comparison/static/js/runtime-main.fe32215a.js",
-    "runtime-main.js.map": "/geospatial-comparison/static/js/runtime-main.fe32215a.js.map",
-    "static/css/2.aeb25d07.chunk.css": "/geospatial-comparison/static/css/2.aeb25d07.chunk.css",
-    "static/js/2.eccf59d7.chunk.js": "/geospatial-comparison/static/js/2.eccf59d7.chunk.js",
-    "static/js/2.eccf59d7.chunk.js.map": "/geospatial-comparison/static/js/2.eccf59d7.chunk.js.map",
+    "main.css": "/geospatial-comparison/static/css/main.6a885611.chunk.css",
+    "main.js": "/geospatial-comparison/static/js/main.72697807.chunk.js",
+    "main.js.map": "/geospatial-comparison/static/js/main.72697807.chunk.js.map",
+    "runtime-main.js": "/geospatial-comparison/static/js/runtime-main.5357ebc7.js",
+    "runtime-main.js.map": "/geospatial-comparison/static/js/runtime-main.5357ebc7.js.map",
+    "static/css/2.3df7228f.chunk.css": "/geospatial-comparison/static/css/2.3df7228f.chunk.css",
+    "static/js/2.6fe30b03.chunk.js": "/geospatial-comparison/static/js/2.6fe30b03.chunk.js",
+    "static/js/2.6fe30b03.chunk.js.map": "/geospatial-comparison/static/js/2.6fe30b03.chunk.js.map",
     "index.html": "/geospatial-comparison/index.html",
-    "precache-manifest.f46070c0f93186f02d89ee66da0f6550.js": "/geospatial-comparison/precache-manifest.f46070c0f93186f02d89ee66da0f6550.js",
-    "service-worker.js": "/geospatial-comparison/service-worker.js",
-    "static/css/2.aeb25d07.chunk.css.map": "/geospatial-comparison/static/css/2.aeb25d07.chunk.css.map",
-    "static/css/main.896ff756.chunk.css.map": "/geospatial-comparison/static/css/main.896ff756.chunk.css.map",
-    "static/js/2.eccf59d7.chunk.js.LICENSE.txt": "/geospatial-comparison/static/js/2.eccf59d7.chunk.js.LICENSE.txt"
+    "static/css/2.3df7228f.chunk.css.map": "/geospatial-comparison/static/css/2.3df7228f.chunk.css.map",
+    "static/css/main.6a885611.chunk.css.map": "/geospatial-comparison/static/css/main.6a885611.chunk.css.map",
+    "static/js/2.6fe30b03.chunk.js.LICENSE.txt": "/geospatial-comparison/static/js/2.6fe30b03.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.fe32215a.js",
-    "static/css/2.aeb25d07.chunk.css",
-    "static/js/2.eccf59d7.chunk.js",
-    "static/css/main.896ff756.chunk.css",
-    "static/js/main.4f0ffae5.chunk.js"
+    "static/js/runtime-main.5357ebc7.js",
+    "static/css/2.3df7228f.chunk.css",
+    "static/js/2.6fe30b03.chunk.js",
+    "static/css/main.6a885611.chunk.css",
+    "static/js/main.72697807.chunk.js"
   ]
 }
