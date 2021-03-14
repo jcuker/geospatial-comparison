@@ -7,7 +7,7 @@ import Mapbox from "./mapbox";
 
 export default function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route path="/leaflet/:id" component={Leaflet}></Route>
         <Route path="/ol/:id" component={OpenLayers}></Route>
